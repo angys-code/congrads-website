@@ -303,7 +303,7 @@ const HeroSection = () => {
         <BlurFade direction="down" delay={0.25 * 1}>
           <CardTilt shimmerEffect={false}>
             <Image
-              src="/images/log2.png"
+              src="/images/logo2.png"
               alt="Congrads Logo2"
               width={180}
               height={180}
