@@ -303,8 +303,8 @@ const HeroSection = () => {
         <BlurFade direction="down" delay={0.25 * 1}>
           <CardTilt shimmerEffect={false}>
             <Image
-              src="/images/logo2.png"
-              alt="Congrads Logo2"
+              src="/images/Logo3.png"
+              alt="Congrads Logo3"
               width={180}
               height={180}
               className="mx-auto mb-8 w-112 h-50 hidden md:block"
