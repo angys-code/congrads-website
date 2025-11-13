@@ -303,8 +303,8 @@ const HeroSection = () => {
         <BlurFade direction="down" delay={0.25 * 1}>
           <CardTilt shimmerEffect={false}>
             <Image
-              src="/images/logo3.png"
-              alt="Congrads Logo3"
+              src="/images/log2.png"
+              alt="Congrads Logo2"
               width={180}
               height={180}
               className="mx-auto mb-8 w-112 h-50 hidden md:block"
@@ -826,7 +826,7 @@ const TestimonialsSection = () => {
 };
 
 
-const AboutUsSection = () => 
+const AboutUsSection = () =>
   <section id="about-us" className="py-20 bg-gray-50/70 border-y" style={{ scrollMarginTop: "60px" }}>
     <div className="container mx-auto px-6 max-w-4xl">
       <BlurFade direction="down" delay={0.25} inView>
@@ -998,7 +998,7 @@ const AboutUsSection = () =>
       </div>
     </div>
   </section>
-;
+  ;
 
 
 const FaqSection = () => (
