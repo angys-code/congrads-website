@@ -206,6 +206,8 @@ const Header = () => (
     />
     {/* End Google Tag Manager */}
 
+    <meta name="p:domain_verify" content="d8aa19b67752b9c1fcc22d6a8ff77c5f"/>
+
     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
       <ScrollProgress className="top-[65px]" />
       <a
