@@ -28,19 +28,15 @@ export default function Impressum() {
           <p className="mt-2">Telefon: +49 (0) 177 1594098</p>
           <p>
             Email:{" "}
-            <a href="mailto:info.congrads@gmail.com" className="text-blue-600">
-              info.congrads@gmail.com
+            <a href="mailto:contact@congrads.de" className="text-blue-600">
+              contact@congrads.de
             </a>
           </p>
 
-          <h3 className="mt-6 font-semibold text-black">Register</h3>
-          <p className="mt-2">
-            Registergericht: nicht vorhanden, da GbR, keine Eintragung im Handelsregister, entfällt durch § 5 Abs. 1 Nr. 4 TMG.
-          </p>
 
           <h3 className="mt-6 font-semibold text-black">Umsatzsteuer-ID</h3>
           <p className="mt-2">
-            Umsatzsteuer-Identifikationsnummer, nicht vorhanden, durch GbR nicht erforderlich nach § 5 TMG.
+            Umsatzsteuer-Identifikationsnummer: DE370296525
             
           </p>
 

@@ -1,0 +1,5 @@
+214 zeile, Header color 
+
+
+
+bg-white muss gelöscht werden bei sections (auch line (y--..))

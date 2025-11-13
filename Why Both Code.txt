@@ -1,0 +1,76 @@
+const WhyBothSection = () => (
+  <section className="py-20 bg-white" id="why-both">
+    <div className="container mx-auto px-6 max-w-4xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Text Left */}
+        <div>
+          <BlurFade direction="down" delay={0.25} inView>
+            <h2 className="text-3xl md:text-4xl font-bold text-black">
+              Warum du{" "}
+              <AuroraText colors={["#2d5cf2", "#2b428bff", "#90a5e8ff"]}>
+                beides
+              </AuroraText>{" "}
+              brauchst?
+            </h2>
+          </BlurFade>
+          <BlurFade direction="down" delay={0.25} inView>
+            <p className="mt-4 text-gray-600">
+              Das Meta Pixel und die Conversions API ergänzen sich perfekt. Das
+              Pixel trackt direkt im Browser, ist aber anfällig für Ad-Blocker
+              und Datenschutz-Einschränkungen. Die Conversions API sendet Events
+              direkt vom Server – unabhängig vom Browser des Nutzers. Das Pixel
+              allein reicht nicht mehr aus. Die CAPI allein ist nicht flexibel
+              genug. Erst zusammen sind sie unschlagbar. Nur mit beiden Systemen
+              erhältst du die vollständigen, zuverlässigen Daten, die Meta
+              braucht, um deine Anzeigen optimal auszuspielen und dein Budget
+              maximal effizient einzusetzen.
+            </p>
+          </BlurFade>
+          <ul className="mt-8 space-y-6">
+            <BlurFade direction="down" delay={0.25} inView>
+              <li className="flex items-start gap-3">
+                <div>
+                  <span className="font-semibold text-xl text-black">
+                    Mehr Daten, bessere Optimierung
+                  </span>
+                  <div className="text-gray-600">
+                    Durch die Kombination von Pixel und API werden doppelt so
+                    viele Conversions erkannt. Meta kann deine Zielgruppe
+                    präziser ansprechen und deine Kampagnen automatisch
+                    optimieren.
+                  </div>
+                </div>
+              </li>
+            </BlurFade>
+            <BlurFade direction="down" delay={0.25} inView>
+              <li className="flex items-start gap-3">
+                <div>
+                  <span className="font-semibold text-xl text-black">
+                    Sicher und zukunftsfähig
+                  </span>
+                  <div className="text-gray-600">
+                    Mit beiden Systemen bist du gegen technische Änderungen und
+                    Datenschutz-Updates gewappnet. Deine Tracking-Infrastruktur
+                    bleibt stabil – egal, was im Browser passiert.
+                  </div>
+                </div>
+              </li>
+            </BlurFade>
+          </ul>
+        </div>
+        {/* Images Right */}
+        <BlurFade direction="down" delay={0.25} inView>
+          <CardTilt shimmerEffect={false} className="flex flex-col gap-8 items-center">
+            <Image
+              src="/images/meta-logo.png"
+              alt="Meta Pixel Illustration"
+              width={100}
+              height={100}
+              className="w-100 h-100 object-contain"
+            />
+          </CardTilt>
+        </BlurFade>
+      </div>
+    </div>
+  </section>
+);

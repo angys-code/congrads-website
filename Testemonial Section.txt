@@ -1,0 +1,63 @@
+const TestimonialsSection = () => {
+  const [current, setCurrent] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-rotate every 10 seconds
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    }, 10000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  return (
+    <section id="testimonials" className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="text-center">
+          <BlurFade direction="down" delay={0.25} inView>
+            <h2 className="text-3xl md:text-4xl font-bold text-black">
+              Wie unsere Kunden{" "}
+              <AuroraText colors={["#2d5cf2", "#2b428bff", "#90a5e8ff"]}>
+                schwärmen
+              </AuroraText>
+              .
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-gray-600">
+              Das sagen unsere ersten Nutzer über ihre Erfahrungen mit Congrads.
+            </p>
+          </BlurFade>
+        </div>
+        <div className="mt-12 flex flex-col items-center">
+          <div className="w-full max-w-lg relative">
+            <BlurFade direction="down" delay={0.5} inView>
+              <CardTilt shimmerEffect={false}>
+                <TestimonialCard
+                  avatarText={testimonials[current].avatarText}
+                  name={testimonials[current].name}
+                  role={testimonials[current].role}
+                >
+                  {testimonials[current].text}
+                </TestimonialCard>
+              </CardTilt>
+            </BlurFade>
+          </div>
+          <BlurFade direction="down" delay={0.75} inView>
+            <div className="flex gap-2 mt-6 justify-center">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`w-2 h-2 rounded-full ${idx === current ? "bg-black" : "bg-gray-300"
+                    } transition`}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                  onClick={() => setCurrent(idx)}
+                />
+              ))}
+            </div>
+          </BlurFade>
+        </div>
+      </div>
+    </section>
+  );
+};

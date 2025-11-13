@@ -22,6 +22,10 @@ export default function RootLayout({
       <body
         className={`${interSans.variable} bg-gray-100 antialiased`}
       >
+        {/* Google Tag Manager (noscript) */}
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JJVGZGJ"
+height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
+{/* End Google Tag Manager (noscript) */}
         {children}
       </body>
     </html>

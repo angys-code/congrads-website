@@ -12,12 +12,18 @@ import {
   Sparkles,
   ChevronDown,
 } from "lucide-react";
+import { FaInstagram, FaFacebookF, FaPinterest, FaTiktok } from 'react-icons/fa';
+import { BsFillMegaphoneFill } from "react-icons/bs";
+
 
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { useRef } from "react";
 import CookieBanner from "@/components/cookie/cookie-banner";
+import { FaChartSimple } from "react-icons/fa6";
+import { IoSparkles } from "react-icons/io5";
+import Silk from '@/components/Silk';
 
 type FeatureFlipCardProps = {
   title: string;
@@ -98,6 +104,7 @@ type CardTiltProps = {
   scale?: number;
   className?: string;
   style?: React.CSSProperties;
+  shimmerEffect?: boolean; // Optional shimmer effect toggle
 };
 
 export const CardTilt: React.FC<CardTiltProps> = ({
@@ -106,6 +113,7 @@ export const CardTilt: React.FC<CardTiltProps> = ({
   scale = 1.04,
   className = "",
   style = {},
+  shimmerEffect = true, // Default to true
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -120,14 +128,24 @@ export const CardTilt: React.FC<CardTiltProps> = ({
     const rotateY = ((x - midX) / midX) * maxTilt;
     const rotateX = -((y - midY) / midY) * maxTilt;
     card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+
+    if (shimmerEffect) {
+      // Add shimmer effect
+      card.style.boxShadow = `0 0 20px rgba(10, 83, 161, 1)`;
+      card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0, 123, 255, 0.3), transparent)`;
+    }
   };
 
   const handleMouseLeave = () => {
     const card = cardRef.current;
     if (card) {
-      card.style.transition = "transform 0.4s cubic-bezier(.21,.98,.6,.99)";
-      card.style.transform =
-        "perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)";
+      card.style.transition =
+        "transform 0.4s cubic-bezier(.21,.98,.6,.99), box-shadow 0.4s, background 0.4s";
+      card.style.transform = "perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)";
+      if (shimmerEffect) {
+        card.style.boxShadow = "none";
+        card.style.background = "none";
+      }
       setTimeout(() => {
         // Restore original transition after animation
         card.style.transition = "transform 0.2s cubic-bezier(.21,.98,.6,.99)";
@@ -140,8 +158,8 @@ export const CardTilt: React.FC<CardTiltProps> = ({
       ref={cardRef}
       className={className}
       style={{
-        transition: "transform 0.2s cubic-bezier(.21,.98,.6,.99)",
-        willChange: "transform",
+        transition: "transform 0.2s cubic-bezier(.21,.98,.6,.99), box-shadow 0.2s, background 0.2s",
+        willChange: "transform, box-shadow, background",
         ...style,
       }}
       onMouseMove={handleMouseMove}
@@ -202,6 +220,21 @@ const Header = () => (
       backgroundColor: "rgba(255, 255, 255, 0.7)",
     }}
   >
+
+    {/* Google Tag Manager */}
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5JJVGZGJ');
+        `,
+      }}
+    />
+    {/* End Google Tag Manager */}
+
     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
       <ScrollProgress className="top-[65px]" />
       <a
@@ -219,13 +252,7 @@ const Header = () => (
       </a>
       <nav className="hidden md:flex items-center gap-8 text-gray-500">
         <a href="#how-it-works" className="hover:text-black transition-colors">
-          Warum Tracking?
-        </a>
-        <a href="#features" className="hover:text-black transition-colors">
-          Pixel & CAPI
-        </a>
-        <a href="#why-both" className="hover:text-black transition-colors">
-          Warum beides?
+          Dienstleistungen
         </a>
         <a href="#about-us" className="hover:text-black transition-colors">
           Über uns
@@ -303,32 +330,32 @@ const HeroSection = () => {
     <section id="start" className="relative py-24 md:py-32 text-center overflow-hidden">
       <div className="px-6 sm:px-8 lg:px-0 max-w-3xl mx-auto text-center">
         <BlurFade direction="down" delay={0.25 * 1}>
-          <Image
-            src="/images/congrads-logo.svg"
-            alt="Congrads Logo"
-            width={80}
-            height={80}
-            className="mx-auto mb-8 w-20 h-20"
-          />
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-center text-black leading-snug md:leading-tight tracking-tighter">
-            Dein Tracking{" "}
+          <CardTilt shimmerEffect={false}>
+            <Image
+              src="/images/logo3.png"
+              alt="Congrads Logo3"
+              width={180}
+              height={180}
+              className="mx-auto mb-8 w-112 h-50 hidden md:block"
+            />
+          </CardTilt>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center text-black leading-snug md:leading-tight tracking-tighter">
+            Wir bauen{" "}
             <AuroraText colors={["#2d5cf2", "#0026a2ff", "#90a5e8ff"]}>
-              lügt
+              Brücken
             </AuroraText>
-            .
-            <br className="md:block" />
-            Wir{" "}
-            <AuroraText colors={["#2d5cf2", "#2b428bff", "#90a5e8ff"]}>
-              beweisen
-            </AuroraText>{" "}
-            es.
+            <span className="text-black">.</span>
+            <br />
+            Zwischen{" "}
+            <AuroraText colors={["#2d5cf2", "#0026a2ff", "#90a5e8ff"]}>
+              Generationen
+            </AuroraText>
+            <span className="text-black">.</span>
           </h1>
         </BlurFade>
         <BlurFade direction="down" delay={0.25 * 2}>
-          <p className="mt-4 md:mt-6 max-w-xl mx-auto text-left sm:text-lg text-gray-600 leading-relaxed">
-            Wir bringen dein Meta-Tracking auf Kurs, damit deine Ads treffen.
-            Konzentrier dich auf dein Business, wir kümmern uns um die Technik
-            dahinter.
+          <p className="mt-4 md:mt-6 max-w-xl mx-auto text-center sm:text-lg text-gray-600 leading-relaxed">
+            Als junge Strategen übersetzen wir Ihr Marketing für die Generation von heute. Unsere Mission: Wir machen Ihr Wachstum messbar – durch transparente Ads, präzises Tracking und Social Media Management, das wirklich ankommt. Bereit für Ihr Level Up?
           </p>
         </BlurFade>
       </div>
@@ -364,7 +391,7 @@ const HeroSection = () => {
 const HowItWorksSection = () => (
   <section id="how-it-works" className="py-20 bg-white">
     <div className="container mx-auto px-6 text-center">
-      <BlurFade direction="down" delay={0.25 * 4} inView>
+      <BlurFade direction="down" delay={0.25 * 2} inView>
         <h2 className="text-3xl md:text-4xl font-bold text-black">
           Budget{" "}
           <span
@@ -401,75 +428,348 @@ const HowItWorksSection = () => (
           Das muss nicht sein.
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-gray-600">
-          Deine Ad-Performance ist ein Glücksspiel, weil dein Tracking
-          lückenhaft ist. Ohne saubere Daten durch Meta Pixel & die Conversions
-          API optimierst du ins Blaue. Das kostet dich jeden Tag bares Geld.
+          Ist Ihre Ad-Performance ein Glücksspiel? Ihr Tracking lückenhaft? Oder doch das Social Media Management zu stressig? Der Punkt ist: Alles hängt miteinander zusammen.
+        </p>
+        <p className="mt-6 max-w-2xl mx-auto text-gray-600">
+          Wir bringen System in Ihre Medienpräsenz. Wir koordinieren uns um Ihre Ad Performance, ein lückenloses Tracking und Ihr Social Media, damit Sie sich auf Ihr Kerngeschäft fokussieren können.
+        </p>
+        <p className="mt-6 max-w-2xl mx-auto text-gray-600">
+          Wir arbeiten nicht nur für Sie – wir arbeiten mit Ihnen. Im Team. Mit 100% Transparenz.
         </p>
       </BlurFade>
       <div className="mt-12 grid md:grid-cols-3 gap-8 md:gap-12">
         <BlurFade direction="down" delay={0.25} inView>
           <CardTilt className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center bg-black text-black rounded-xl w-16 h-16 border border-gray-200 mx-auto">
-                <Link className=" w-8 h-8 mx-auto text-white" />
+            <a href="#social-media-management">
+              <div className="flex flex-col items-center">
+                <div className="flex items-center justify-center bg-black text-black rounded-xl w-16 h-16 border border-gray-200 mx-auto">
+                  <IoSparkles className="w-8 h-8 mx-auto text-white" />
+                </div>
+                <h3 className="mt-6 text-xl font-semibold">Social Media Management</h3>
+                <p className="mt-2 text-center text-gray-600 block">
+                  Wir koordinieren die Planung, Erstellung und Verwaltung Ihrer Inhalte. Als "Digital Natives" wissen wir, wie man eine Community begeistert oder von Grund auf neu aufbaut. Wir schaffen gemeinsam eine moderne & gesunde Medienpräsenz für Ihre Marke. Die nicht nur gesehen wird, sondern auch ankommt.
+                </p>
               </div>
-              <h3 className="mt-6 text-xl font-semibold">
-                Intransparente Ergebnisse
-              </h3>
-              <p className="mt-2 text-left text-gray-600">
-                Du investierst fleißig in Meta-Anzeigen, doch am Monatsende
-                herrscht Verwirrung. Die Zahlen im Werbeanzeigenmanager und in
-                deinem Shop-Backend erzählen unterschiedliche Geschichten. Du
-                kannst nicht mit Sicherheit sagen, welche Anzeige wirklich den
-                Kauf ausgelöst hat. Dieses Gefühl, Werbebudget im Blindflug
-                auszugeben, ohne den echten ROI zu kennen, ist frustrierend und
-                teuer.
-              </p>
-            </div>
+            </a>
           </CardTilt>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
           <CardTilt className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center bg-black text-black rounded-xl w-16 h-16 border border-gray-200 mx-auto">
-                <BrainCircuit className="w-8 h-8 mx-auto text-white" />
+            <a href="#ads">
+              <div className="flex flex-col items-center">
+                <div className="flex items-center justify-center bg-black text-black rounded-xl w-16 h-16 border border-gray-200 mx-auto">
+                  <BsFillMegaphoneFill className="w-8 h-8 mx-auto text-white" />
+                </div>
+                <h3 className="mt-6 text-xl font-semibold">Ads</h3>
+                <p className="mt-2 text-center text-gray-600">
+                  Wir bauen die Strategie hinter Ihren Ads.
+                  <br />
+                  Von optimierten Copies, zeitgemäßen Creatives bis hin zum Management auf Meta, Google & Co.
+                  <br />
+                  Wir sorgen dafür, dass Sie Ihr Budget nicht verbrennen.
+                </p>
               </div>
-              <h3 className="mt-6 text-xl font-semibold">
-                Stagnierende Kampagnen-Performance
-              </h3>
-              <p className="mt-2 text-left text-gray-600">
-                Deine Kampagnen laufen, aber sie optimieren sich nicht von
-                selbst, wie sie sollten. Die Kosten pro Kauf steigen, obwohl die
-                Klickzahlen in Ordnung sind. Meta kann deine Anzeigen nicht
-                effektiv den richtigen Leuten zeigen, weil die Datenbasis durch
-                Ad-Blocker, fehlerhaftes Pixel-Setup und iOS-Updates
-                unvollständig ist. Deine Kampagnen treten auf der Stelle,
-                anstatt profitabler zu werden.
-              </p>
-            </div>
+            </a>
           </CardTilt>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
           <CardTilt className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center bg-black text-black rounded-xl w-16 h-16 border border-gray-200 mx-auto">
-                <Sparkles className="w-8 h-8 mx-auto text-white" />
+            <a href="#tracking">
+              <div className="flex flex-col items-center">
+                <div className="flex items-center justify-center bg-black text-black rounded-xl w-16 h-16 border border-gray-200 mx-auto">
+                  <FaChartSimple className="w-8 h-8 mx-auto text-white" />
+                </div>
+                <h3 className="mt-6 text-xl font-semibold">Tracking</h3>
+                <p className="mt-2 text-center text-gray-600">
+                  Performance ist kein Glück. <br />
+                  Wir implementieren lückenloses Tracking für Ihre gesamte digitale Präsenz – von der Website über Social Media bis zu den Ads. So sehen Sie, was wirklich funktioniert.
+                  Datenbasiert, messbar und 100% transparent.
+                  Leiden Sie nicht länger unter Datenverlust.
+                </p>
               </div>
-              <h3 className="mt-6 text-xl font-semibold">
-                Technische Überforderung
-              </h3>
-              <p className="mt-2 text-left text-gray-600">
-                Du hast von Tracking gehört und weißt, dass du etwas tun musst,
-                aber der technische Aufwand lähmt dich. Die Vorstellung, dich
-                mit Server-Containern, Event-Deduplizierung und der sich ständig
-                ändernden Technikwelt auseinandersetzen zu müssen, hält dich
-                davon ab, zu handeln. Die Sorge wächst, den Anschluss zu
-                verlieren und mit einem veralteten Setup nicht mehr
-                wettbewerbsfähig zu sein..
-              </p>
-            </div>
+            </a>
           </CardTilt>
         </BlurFade>
+      </div>
+    </div>
+  </section>
+);
+
+const ServicesSection = () => (
+  <section id="services" className="py-20 bg-gray-50">
+    <div className="container mx-auto px-6">
+      <div className="space-y-16">
+        <div className="text-center mb-15"></div>
+
+        {/* Social Media Management Section */}
+        <div
+          id="social-media-management"
+          className="text-center mb-8"
+          style={{ scrollMarginTop: "-330px" }}
+        >
+          <h2 className="text-4xl font-bold text-black">
+            <AuroraText
+              colors={["#2d5cf2", "#0026a2ff", "#90a5e8ff"]}
+              className="text-5xl"
+            >
+              How to Social Media
+            </AuroraText>
+          </h2>
+          <p className="mt-2 text-gray-600">
+            "Kontinuität und Kreativität sind der Schlüssel zum Erfolg"
+          </p>
+        </div>
+
+        <div className="flex flex-col xl:flex-row items-center gap-9">
+          <div className="hidden xl:flex xl:w-1/4 flex-wrap justify-center gap-21">
+            <div className="flex flex-col gap-20">
+              <div className="flex gap-20">
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/facebook.png"
+                    alt="Social Media Management Service"
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/instagram.png"
+                    alt="Social Media Management Service"
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+              </div>
+              <div className="flex gap-20">
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/pinterest.png"
+                    alt="Social Media Management Service"
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/tiktok.png"
+                    alt="Social Media Management Service"
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full xl:w-2/3">
+            <h2 className="text-3xl xl:text-4xl font-bold text-black">
+              Social Media Management
+            </h2>
+            <p className="mt-4 text-gray-600">
+              Eine moderne und gesunde Medienpräsenz ist kein Zufall, sondern das Ergebnis einer ganzheitlichen Strategie. Egal, ob Sie bei Null anfangen oder eine bestehende Community optimieren wollen: <strong>Wir sind Ihr strategischer Partner</strong> für das Management Ihrer Social-Media-Kanäle – von der Konzeption bis zur Community-Interaktion.
+            </p>
+            <p className="mt-4 text-gray-600">
+              Unser <em>"Alles-aus-einer-Hand"</em>-Ansatz umfasst:
+            </p>
+            <ul className="mt-4 text-gray-600 list-disc list-inside">
+              <li>
+                <strong>Individuelle Strategie & Planung:</strong> Wir entwickeln mit Ihnen gemeinsam einen individuellen Redaktionsplan, der exakt auf Ihre Ziele zugeschnitten ist. Als <em>"Digital Natives"</em> verstehen wir die Dynamik von Trends und integrieren diese, wo es für Ihre Marke strategisch sinnvoll ist.
+              </li>
+              <li className="mt-2">
+                <strong>Content-Erstellung (Full-Service):</strong> Unser Team setzt die Content-Erstellung für Sie um – immer in enger Abstimmung mit Ihrer Markenstimme. Wir designen zeitgemäße Creatives und Visuals, verfassen SEO-optimierte Copies und entwickeln eine fundierte Hashtag-Strategie.
+              </li>
+              <li className="mt-2">
+                <strong>Technisches Management & Analyse:</strong> Wir kümmern uns nicht nur um die Veröffentlichung. Wir führen kontinuierlich Algorithmus- und Richtlinien-Analysen durch, um immer auf dem neuesten Stand zu sein und Ihre Präsenz sicher und effektiv zu gestalten.
+              </li>
+            </ul>
+            <p className="mt-4 text-gray-600">
+              Wir managen Ihre Kanäle auf <strong>Facebook, Instagram, TikTok und Pinterest</strong>. Unser Ziel ist es, dass Sie Ihre Zielgruppe authentisch erreichen und eine loyale Community aufbauen – während Sie sich auf Ihr Kerngeschäft konzentrieren.
+            </p>
+          </div>
+        </div>
+        <div className="text-center mb-45"></div>
+
+
+        {/* Ads Section */}
+        <div id="ads" className="text-center mb-8" style={{ scrollMarginTop: "-330px" }}>
+          <h2 className="text-4xl font-bold text-black">
+            <AuroraText
+              colors={["#2d5cf2", "#0026a2ff", "#90a5e8ff"]}
+              className="text-5xl"
+            >
+              How to Advertise
+            </AuroraText>
+          </h2>
+          <p className="mt-2 text-gray-600">
+            "Egal was Sie bewerben wollen – wir bringen Ihre Botschaft mit kreativer Strategie auf den Markt."
+          </p>
+        </div>
+        <div className="flex flex-col md:flex-row items-center gap-4">
+          <div className="w-full md:w-2/3">
+            <h2 className="text-3x1 md:text-4xl font-bold text-black">Werbekampagnen Optimierung</h2>
+            <p className="mt-4 text-gray-600 text-left">
+              Einfach Geld in Ads zu stecken, ist nicht zielführend und kann schnell nach hinten losgehen. <br />
+              Wir <strong>optimieren</strong> Ihre Ausgaben und maximieren Ihre Ergebnisse. Je nach Zielsetzung steigern wir gezielt Ihre <em>Reichweite</em>, <em>Klicks</em>, <em>Impressions</em> oder generieren wertvolle <strong>Leads</strong> für Ihr Unternehmen. <br />
+              Die optimale Werbekampagne ergibt sich aus den richtigen Fragen: <br />
+              Welche <strong> Ziele</strong> werden verfolgt? <strong>Wie ist Ihre Zielgruppe</strong> exakt definiert? <strong>Wie setzen wir Ihr Budget</strong> optimal ein? <br />
+              Nur mit einer klaren <strong>Strategie</strong> und <em>Kreativität</em> werden aus einfachen Ads, Werbeanzeigen, die <strong>Congrads</strong> würdig sind.
+            </p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6">Google Ads</h3>
+            <p className="mt-4 text-gray-600">
+              Wir nutzen die Macht der Suchintention. Mit strategischer Keyword-Analyse und SEO-optimierten Anzeigetexten erreichen wir Ihre Kunden, genau dann, wenn diese nach Ihren Produkten oder Dienstleistungen suchen.
+            </p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6">Meta Ads</h3>
+            <p className="mt-4 text-gray-600">
+              Wir erreichen Ihre Zielgruppe auf Meta (Facebook & Instagram). Mit präzisem Targeting nach Interessen und zeitgemäßen Creatives, die im Feed herausstechen, verwandeln wir passive Nutzer in aktive Kunden.
+            </p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6">TikTok Ads</h3>
+            <p className="mt-4 text-gray-600">
+              Als die schnelllebigste Social-Media-Plattform ist TikTok für maximale Impressionen und Clicks heute unersetzlich. Als "Digital Natives" verstehen wir nicht nur Trends, sondern erstellen für Sie authentische, performende Creatives, die nicht wie Fremdkörper in Ihrer Nische wirken, sondern Ihre Zielgruppe wirklich erreichen.
+            </p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6">Pinterest Ads</h3>
+            <p className="mt-4 text-gray-600">
+              Pinterest ist eine oft unterschätzte Goldgrube. Nutzer suchen hier gezielt Kreativität und Inspiration. Wir nehmen Ihnen die Hürde der Ästhetik ab und integrieren Ihre Ads nahtlos in die Feeds – als wären es organische, inspirierende Pins.
+            </p>
+          </div>
+
+          <div className="hidden md:flex md:w-1/3 flex-col gap-12">
+            <div className="text-center mb-54"></div>
+            <div className="flex flex-col items-center">
+              <CardTilt shimmerEffect={false} style={{ width: 45, height: 45 }}>
+                <Image
+                  src="/images/google-logo.png"
+                  alt="Google Tracking Service"
+                  width={100}
+                  height={100}
+                  className="rounded-lg"
+                />
+              </CardTilt>
+              <h3 className="mt-4 text-xl font-semibold text-center">Google Ads</h3>
+            </div>
+            <div className="flex flex-col items-center">
+              <CardTilt shimmerEffect={false} style={{ width: 90, height: 45 }}>
+                <Image
+                  src="/images/meta-logo.png"
+                  alt="Social Media Management Service"
+                  width={100}
+                  height={100}
+                  className="rounded-lg"
+                />
+              </CardTilt>
+              <h3 className="mt-4 text-xl font-semibold text-center">Meta Ads</h3>
+            </div>
+            <div className="flex flex-col items-center">
+              <CardTilt shimmerEffect={false} style={{ width: 45, height: 45 }}>
+                <Image
+                  src="/images/tiktok.png"
+                  alt="Social Media Management Service"
+                  width={100}
+                  height={100}
+                  className="rounded-lg"
+                />
+              </CardTilt>
+              <h3 className="mt-4 text-xl font-semibold text-center">TikTok Ads</h3>
+            </div>
+            <div className="flex flex-col items-center">
+              <CardTilt shimmerEffect={false} style={{ width: 45, height: 45 }}>
+                <Image
+                  src="/images/pinterest.png"
+                  alt="Social Media Management Service"
+                  width={100}
+                  height={100}
+                  className="rounded-lg"
+                />
+              </CardTilt>
+              <h3 className="mt-4 text-xl font-semibold text-center">Pinterest Ads</h3>
+            </div>
+          </div>
+        </div>
+        <div className="text-center mb-45"></div>
+
+        {/* Tracking Section */}
+        <div id="tracking" className="text-center mb-8" style={{ scrollMarginTop: "-330px" }}>
+          <h2 className="text-4xl font-bold text-black">
+            <AuroraText
+              colors={["#2d5cf2", "#0026a2ff", "#90a5e8ff"]}
+              className="text-5xl"
+            >
+              How to Track
+            </AuroraText>
+          </h2>
+          <p className="mt-2 text-gray-600">
+            "Performance ist kein Glücksspiel. Leiden Sie nicht länger unter Datenverlust."
+          </p>
+        </div>
+        <div className="flex flex-col xl:flex-row items-center gap-9">
+          <div className="hidden xl:flex xl:w-1/4 flex-wrap justify-center gap-21">
+            <div className="flex flex-col gap-20">
+              <div className="flex gap-20">
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/meta-logo.png"
+                    alt="Meta Tracking Service"
+                    width={150}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/google-logo.png"
+                    alt="Google Tracking Service"
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+              </div>
+              <div className="flex gap-20">
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/pinterest.png"
+                    alt="Pinterest Tracking Service"
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+                <CardTilt shimmerEffect={false} style={{ width: 200, height: 150 }}>
+                  <Image
+                    src="/images/tiktok.png"
+                    alt="TikTok Tracking Service"
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                </CardTilt>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full xl:w-2/3">
+            <h2 className="text-3xl md:text-4xl font-bold text-black">Tracking</h2>
+            <p className="mt-4 text-gray-600">
+              <strong>Tracking</strong> ist das Fundament für jede datenbasierte Entscheidung. Doch es geht nicht nur darum, Daten zu sammeln, sondern diese auch <em>strategisch zu analysieren</em>, um die Performance Ihrer Kampagnen wirklich zu verstehen.
+              <br />
+              Nur so können wir gemeinsam die <strong>Ziele</strong> erreichen, die Sie sich vorgenommen haben.
+              <br />
+              Wir sind Ihr <strong>strategischer Partner</strong> für ein <em>360°-Tracking-System</em> – von <strong>Google Tags</strong> und dem <strong>Pinterest Tag</strong> bis hin zu <strong>Meta Pixel</strong> und der <strong>Conversions API (CAPI)</strong>.
+            </p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6">Pinterest Tag</h3>
+            <p className="mt-4 text-gray-600">
+              Der Pinterest Tag ist ein Code-Schnipsel, der die Aktionen misst, die Nutzer nach dem Sehen Ihrer Pins auf Ihrer Website ausführen. Diese Daten sind die Grundlage für die Analyse und strategische Optimierung Ihrer Kampagnen-Performance.
+            </p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6"> Google Tag</h3>
+            <p className="mt-4 text-gray-600">
+              Der Google Tag ist die zentrale Tracking-Lösung, die Ihre Website mit Google Ads und Google Analytics verbindet. Dieser einzelne Code-Schnipsel misst Website-Aktivitäten und Nutzerinteraktionen, um die Performance Ihrer Google Ads-Kampagnen zu analysieren und Website-Traffic-Daten zu erfassen.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -484,117 +784,25 @@ const FeaturesSection = () => (
           <AuroraText colors={["#2d5cf2", "#2b428bff", "#90a5e8ff"]}>
             Power-Duo
           </AuroraText>{" "}
-          für dein Marketing
+          für Ihr Marketing
         </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-left text-gray-600">
-          Stell dir dein Tracking wie ein Sicherheitssystem vor. Du willst keine
-          einzige Bewegung verpassen, um die richtigen Entscheidungen zu
-          treffen. Genau hier kommen das Meta Pixel und die Conversions API
-          (CAPI) ins Spiel.
+        <p className="mt-4 max-w-2xl mx-auto text-center text-gray-600">
+          Stellen Sie sich Ihr Tracking wie ein Sicherheitssystem vor. Sie wollen keine einzige Bewegung verpassen, um die richtigen Entscheidungen zu treffen. Genau hier kommen das Meta Pixel und die Conversions API (CAPI) ins Spiel.
         </p>
       </div>
       <div className="mt-12 flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
           <FeatureFlipCard title="Meta Pixel - Dein Spion im Browser">
-            Das Meta Pixel ist ein kleines Stück Code auf deiner Website. Es
-            beobachtet, was Besucher direkt im &quot;Schaufenster&quot; – also
-            in ihrem Browser – tun: Welche Produkte schauen sie an? Was legen
-            sie in den Warenkorb? Wer kauft am Ende? Diese Informationen sind
-            Gold wert, damit Meta deine Anzeigen an ähnliche, kaufbereite Nutzer
-            ausspielen kann.
+            Das Meta Pixel ist ein Code-Segment auf Ihrer Website. Es funktioniert wie ein Blick ins 'Schaufenster': Es erfasst, was Besucher direkt im Browser tun. Welche Produkte sehen sie an? Was legen sie in den Warenkorb? Diese Informationen sind entscheidend, damit Meta Ihre Anzeigen an kaufbereite Zielgruppen ausspielen kann.
           </FeatureFlipCard>
           <FeatureFlipCard title="Conversions API: Dein Server spricht mit Meta">
-            Die Conversions API ist die Verstärkung. Anstatt nur im Schaufenster
-            zu beobachten, schafft sie eine direkte, unsichtbare Verbindung von
-            deinem Shop-System (deinem Server) zu Meta. Wenn ein Kauf
-            stattfindet, meldet dein Server das direkt an Meta – sicher und
-            zuverlässig. Diese Verbindung kann von Ad-Blockern nicht gestört
-            werden.
+            Die Conversions API (CAPI) ist die strategische Verstärkung. Sie schafft eine direkte und unsichtbare Verbindung von Ihrem Shop-System (Ihrem Server) zu Meta. Findet ein Kauf statt, meldet Ihr Server dies auf direktem Weg – sicher und zuverlässig. Diese serverseitige Verbindung kann von Ad-Blockern nicht beeinträchtigt werden.
           </FeatureFlipCard>
         </div>
       </div>
     </div>
   </section>
 );
-
-const WhyBothSection = () => (
-  <section className="py-20 bg-white" id="why-both">
-    <div className="container mx-auto px-6 max-w-4xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Text Left */}
-        <div>
-          <BlurFade direction="down" delay={0.25} inView>
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              Warum du{" "}
-              <AuroraText colors={["#2d5cf2", "#2b428bff", "#90a5e8ff"]}>
-                beides
-              </AuroraText>{" "}
-              brauchst?
-            </h2>
-          </BlurFade>
-          <BlurFade direction="down" delay={0.25} inView>
-            <p className="mt-4 text-gray-600">
-              Das Meta Pixel und die Conversions API ergänzen sich perfekt. Das
-              Pixel trackt direkt im Browser, ist aber anfällig für Ad-Blocker
-              und Datenschutz-Einschränkungen. Die Conversions API sendet Events
-              direkt vom Server – unabhängig vom Browser des Nutzers. Das Pixel
-              allein reicht nicht mehr aus. Die CAPI allein ist nicht flexibel
-              genug. Erst zusammen sind sie unschlagbar. Nur mit beiden Systemen
-              erhältst du die vollständigen, zuverlässigen Daten, die Meta
-              braucht, um deine Anzeigen optimal auszuspielen und dein Budget
-              maximal effizient einzusetzen.
-            </p>
-          </BlurFade>
-          <ul className="mt-8 space-y-6">
-            <BlurFade direction="down" delay={0.25} inView>
-              <li className="flex items-start gap-3">
-                <div>
-                  <span className="font-semibold text-xl text-black">
-                    Mehr Daten, bessere Optimierung
-                  </span>
-                  <div className="text-gray-600">
-                    Durch die Kombination von Pixel und API werden doppelt so
-                    viele Conversions erkannt. Meta kann deine Zielgruppe
-                    präziser ansprechen und deine Kampagnen automatisch
-                    optimieren.
-                  </div>
-                </div>
-              </li>
-            </BlurFade>
-            <BlurFade direction="down" delay={0.25} inView>
-              <li className="flex items-start gap-3">
-                <div>
-                  <span className="font-semibold text-xl text-black">
-                    Sicher und zukunftsfähig
-                  </span>
-                  <div className="text-gray-600">
-                    Mit beiden Systemen bist du gegen technische Änderungen und
-                    Datenschutz-Updates gewappnet. Deine Tracking-Infrastruktur
-                    bleibt stabil – egal, was im Browser passiert.
-                  </div>
-                </div>
-              </li>
-            </BlurFade>
-          </ul>
-        </div>
-        {/* Images Right */}
-        <BlurFade direction="down" delay={0.25} inView>
-          <CardTilt className="flex flex-col gap-8 items-center">
-            <Image
-              src="/images/meta-logo.png"
-              alt="Meta Pixel Illustration"
-              width={100}
-              height={100}
-              className="w-100 h-100 object-contain"
-            />
-          </CardTilt>
-        </BlurFade>
-      </div>
-    </div>
-  </section>
-);
-
-// import { useState, useRef } from 'react';
 
 const testimonials = [
   {
@@ -643,85 +851,42 @@ const TestimonialsSection = () => {
     };
   }, []);
 
-  return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center">
-          <BlurFade direction="down" delay={0.25} inView>
-            <h2 className="text-3xl md:text-4xl font-bold text-black">
-              Wie unsere Kunden{" "}
-              <AuroraText colors={["#2d5cf2", "#2b428bff", "#90a5e8ff"]}>
-                schwärmen
-              </AuroraText>
-              .
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-gray-600">
-              Das sagen unsere ersten Nutzer über ihre Erfahrungen mit Congrads.
-            </p>
-          </BlurFade>
-        </div>
-        <div className="mt-12 flex flex-col items-center">
-          <div className="w-full max-w-lg relative">
-            <BlurFade direction="down" delay={0.5} inView>
-              <CardTilt>
-                <TestimonialCard
-                  avatarText={testimonials[current].avatarText}
-                  name={testimonials[current].name}
-                  role={testimonials[current].role}
-                >
-                  {testimonials[current].text}
-                </TestimonialCard>
-              </CardTilt>
-            </BlurFade>
-          </div>
-          <BlurFade direction="down" delay={0.75} inView>
-            <div className="flex gap-2 mt-6 justify-center">
-              {testimonials.map((_, idx) => (
-                <button
-                  key={idx}
-                  className={`w-2 h-2 rounded-full ${
-                    idx === current ? "bg-black" : "bg-gray-300"
-                  } transition`}
-                  aria-label={`Go to testimonial ${idx + 1}`}
-                  onClick={() => setCurrent(idx)}
-                />
-              ))}
-            </div>
-          </BlurFade>
-        </div>
-      </div>
-    </section>
-  );
+  return null; // Removed the "Why both" section and returning null to avoid rendering issues
 };
 
+
 const AboutUsSection = () => (
-  <section id="about-us" className="py-20 bg-gray-50/70 border-y">
+  <section id="about-us" className="py-20 bg-gray-50/70 border-y" style={{ scrollMarginTop: "60px" }}>
     <div className="container mx-auto px-6 max-w-4xl">
       <BlurFade direction="down" delay={0.25} inView>
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-black">
-            Über uns
+            <AuroraText colors={["#2d5cf2", "#0026a2ff", "#90a5e8ff"]}>
+              Über uns
+            </AuroraText>
           </h2>
           <p className="mt-4 text-gray-600">
-            Congrads ist ein Team aus erfahrenen E-Commerce- und Tracking-Experten. Wir helfen Online-Shops, ihr Meta-Tracking zu perfektionieren, damit Werbebudgets effizient eingesetzt werden und Wachstum messbar wird. Unser Ansatz: verständliche Beratung, technische Exzellenz und echte Ergebnisse.
+            Wir sind Congrads – ein Team aus vier jungen Strategen und die Marketingbrücke der Generationen. Wir haben früh erkannt, dass viele Unternehmen die Generation von heute marketingtechnisch nicht mehr verstehen. Wir übersetzen Ihre Botschaft für das digitale Zeitalter, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.
           </p>
         </div>
       </BlurFade>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <BlurFade direction="down" delay={0.5} inView>
           <div className="flex flex-col gap-4">
-        <h3 className="font-semibold text-lg text-black">Unsere Mission</h3>
-        <p className="text-gray-600">
-          Wir glauben, dass jedes Unternehmen Klarheit über seine Marketing-Performance verdient. Mit Congrads bringen wir Transparenz und Kontrolle in dein Tracking – damit du bessere Entscheidungen treffen kannst.
-        </p>
-        <h3 className="font-semibold text-lg text-black mt-6">Unser Team</h3>
-        <p className="text-gray-600">
-          Hinter Congrads stehen Entwickler, Marketing-Profis und Berater mit jahrelanger Erfahrung in E-Commerce und Performance Marketing. Wir sprechen deine Sprache und setzen die Technik so um, dass sie einfach funktioniert.
-        </p>
+            <h3 className="font-semibold text-lg text-black">Unsere Mission</h3>
+            <p className="text-gray-600">
+              Unsere Mission ist es, Sie einen Schritt weiterzubringen und dies durch eine Marketingbrücke der Generationen. Viele Unternehmen verstehen den ständigen Wandel nicht mehr und lassen unsere Generation marketingtechnisch außer Acht.
+              Unser Alter ist unser größter strategischer Vorteil: Wir sind die Generation von heute. Basierend auf 100% Transparenz und gemeinsamem Lernen, helfen wir Ihnen, jede Generation zu erreichen – von "New School" bis "Old School".
+            </p>
+            <h3 className="font-semibold text-lg text-black mt-6">Unser Team</h3>
+            <p className="text-gray-600">
+              Wir sind ein vierköpfiges Team, das bereits im Alter von ca. 16 Jahren begann, sich autodidaktisch mit Marketing, Investments und kontinuierlicher Weiterbildung zu beschäftigen. Unsere Stärke liegt in unserer außergewöhnlichen Zusammensetzung: Wir vereinen unterschiedliche Persönlichkeitsmodelle, vom kreativen Optimisten bis zum präzisen Strategen. Das ermöglicht uns, flexibel, wohlüberlegt und perfektionistisch an jede Herausforderung heranzugehen.
+
+            </p>
           </div>
         </BlurFade>
         <BlurFade direction="down" delay={0.75} inView>
-          <CardTilt className="relative holographic-pokemon-card overflow-visible">
+          <CardTilt shimmerEffect={false} className="relative holographic-pokemon-card overflow-visible">
             <div
               className="relative rounded-2xl shadow-xl border-4 border-yellow-400 bg-gradient-to-br from-yellow-200 via-yellow-100 to-yellow-300 pokemon-card-inner"
               style={{ minHeight: 420, width: 320, maxWidth: "100%" }}
@@ -740,7 +905,7 @@ const AboutUsSection = () => (
                 </span>
                 <span className="flex items-center gap-1 text-yellow-900 font-bold text-lg">
                   <span>HP</span>
-                  <span>60</span>
+                  <span>90</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="#f55a13ff"><circle cx="12" cy="12" r="10" /><path d="M12 7v5l3 3" /></svg>
                 </span>
               </div>
@@ -764,25 +929,25 @@ const AboutUsSection = () => (
                   <span>∞ Ideen</span>
                 </div>
                 <div className="mt-2">
-                    <span className="font-bold text-yellow-900 text-lg">Consulting Power</span>
-                    <span className="ml-2 text-yellow-900 font-bold">∞</span>
-                    <div className="text-xs text-gray-700 mt-1">
-                    Unlocks growth by combining tech expertise and marketing strategy. The more challenges you face, the stronger the results.
-                    </div>
+                  <span className="font-bold text-yellow-900 text-lg">Hyper-Entwicklung</span>
+                  <span className="ml-2 text-yellow-900 font-bold">∞</span>
+                  <div className="text-xs text-gray-700 mt-1">
+                    Autonome Entwicklung direkt in der Aktion. Je größer die Herausforderung, desto stärker das Ergebnis.
+                  </div>
                 </div>
               </div>
               {/* Card footer */}
               <div className="flex justify-between items-center px-4 py-2 text-xs">
                 <div className="flex gap-2">
-                    <span className="bg-white border border-gray-300 rounded px-1">Stärken</span>
-                    <span className="text-green-600 font-bold">Brand Scaling</span>
-                    <span className="bg-white border border-gray-300 rounded px-1">Schwächen</span>
-                    <span className="text-red-600 font-bold">Kaffee</span>
+                  <span className="bg-white border border-gray-300 rounded px-1">Stärken</span>
+                  <span className="text-green-600 font-bold">Kreativität</span>
+                  <span className="bg-white border border-gray-300 rounded px-1">Schwächen</span>
+                  <span className="text-red-600 font-bold">Kaffee</span>
                 </div>
               </div>
-                <div className="px-4 pb-3 text-xs text-gray-600 italic">
-                Congrads bündelt Know-how und Energie, um für Unternehmen messbare Ergebnisse und nachhaltiges Wachstum zu schaffen.
-                </div>
+              <div className="px-4 pb-3 text-xs text-gray-600 italic">
+                "Haben für diese Agentur fast unser Abi geschmissen – keine Sorge, wir haben bestanden."
+              </div>
               {/* Styles */}
               <style jsx>{`
                 .holographic-pokemon-card {
@@ -864,63 +1029,63 @@ const AboutUsSection = () => (
   </section>
 );
 
+
 const FaqSection = () => (
-  <section id="faq" className="py-20 bg-gray-50/70 border-y">
+  <section id="faq" className="py-20 bg-gray-50/70 border-y" style={{ scrollMarginTop: "240px" }}>
     <div className="container mx-auto px-6 max-w-3xl">
       <BlurFade direction="down" delay={0.25} inView>
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-black">
-            Häufige Fragen (FAQ)
+            <AuroraText colors={["#2d5cf2", "#0026a2ff", "#90a5e8ff"]}>
+              Häufige Fragen (FAQ)
+            </AuroraText>
           </h2>
           <p className="mt-4 text-gray-600">
             Noch unsicher? Hier findest du Antworten auf die wichtigsten Fragen
-            rund um Tracking, Pixel & CAPI.
+            rund um unsere Services.
           </p>
         </div>
       </BlurFade>
       <div className="mt-12 space-y-4">
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Ist mein Tracking mit Congrads DSGVO-konform?">
-            Ja, wir richten dein Tracking so ein, dass es den aktuellen
-            Datenschutzbestimmungen entspricht.
+          <FaqItem question="Sie sind ja noch sehr jung. Warum ist das ein Vorteil und kein Nachteil für mich?">
+            Unser Alter ist unser größter strategischer Vorteil. Wir sind die Generation von heute. Näher am Geschehen und am Wandel kann niemand sein. Unsere Arbeit besteht nicht aus "stupider, gelernter Anwendung", sondern aus der agilen Kombination von Kreativität und Strategie. Kurz gesagt: Wir sind der Wandel.
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Brauche ich technisches Vorwissen für die Einrichtung?">
-            Nein. Unser Team übernimmt die komplette technische Umsetzung und
-            erklärt dir die wichtigsten Schritte – verständlich und transparent.
+          <FaqItem question="Funktioniert Ihre 'Marketingbrücke der Generationen' auch für traditionelle Branchen, oder liegt Ihr Fokus nur auf der Generation Z?">
+            Wir sehen uns als Dolmetscher der Generationen. Unsere Mission ist es, eine Verbindung zu schaffen. Das bedeutet, wir verstehen nicht nur die "neue Welt" (Gen Z), sondern können Ihre traditionelle Branchen-Expertise aufnehmen und so übersetzen, dass sie verstanden wird.
+            So schlagen wir die Brücke zwischen "New School" und "Old School" und stellen sicher, dass Ihre Botschaft bei jeder Generation ankommt.
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Was ist der Unterschied zwischen Pixel und Conversions API?">
-            Das Pixel sammelt Daten direkt im Browser deiner Besucher, die
-            Conversions API sendet Events vom Server. Zusammen sorgen sie für
-            maximale Datenqualität und Zuverlässigkeit.
+          <FaqItem question="Wie stellen Sie sicher, dass Sie unsere Markenstimme treffen? Wir wollen nicht plötzlich, wie Teenager klingen.">
+            Das ist ein Kernpunkt unserer "Junge Strategen"-Identität. "Jung" bedeutet für uns "Kreativität", "Stratege" bedeutet "Professionalität".
+            Durch unseren partnerschaftlichen Ansatz und das "gemeinsame Lernen" stellen wir durch 100% Transparenz sicher, dass wir Ihre Markenstimme treffen und nicht unsere eigene durchsetzen. Wir sorgen dafür, dass die junge Generation Sie versteht – nicht, dass Sie wie die junge Generation klingen.
+
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Wie lange dauert die Einrichtung?">
-            In der Regel ist dein Tracking innerhalb weniger Tage einsatzbereit.
-            Wir stimmen den Ablauf individuell mit dir ab.
+          <FaqItem question="Wie transparent ist der Prozess? Meine letzte Agentur hat mich von allem ausgeschlossen.">
+            Transparenz ist die Basis unserer "gemeinsames Lernen"-Philosophie. Wir sind davon überzeugt, dass eine Herausforderung nur durch gemeinsames Anpacken bewältigt werden kann. Sie werden nicht ausgeschlossen, sondern sind Teil des Teams.
+            Wie ein Mitglied unseres Teams sagt: "Teamwork makes it dreamwork." ~ Angelo
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Für welche Systeme bietet ihr Tracking an?">
-            Wir unterstützen alle gängigen Systeme wie Shopify, WordPress und
-            individuelle Lösungen.
+          <FaqItem question="Muss ich das 'Gesamtpaket' (Ads, Tracking, SMM) buchen oder bieten Sie auch einzelne Leistungen an?">
+            Unser Aufgabenfeld ist breit gefächert, und strategisch hängt alles zusammen. Dennoch bieten wir unsere Dienstleistungen flexibel and passend zu Ihren Bedürfnissen an. Sie können einzelne Leistungen buchen oder mit uns ein ganzheitliches System aufbauen.
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Was kostet die Zusammenarbeit mit Congrads?">
-            Die Kosten richten sich nach deinem Bedarf und Umfang des Projekts.
-            Nach einem kostenlosen & unverbindlichen Erstgespräch erhältst du
-            ein individuelles Angebot.
+          <FaqItem question="Gibt es ein Mindest-Werbebudget, das Sie für Ads voraussetzen?">
+            Nein. Wir definieren kein starres Mindestbudget. Der nötige Aufwand ist abhängig von den Zielen, die Sie erreichen wollen.
+            In einem transparenten Erstgespräch klären wir, welches Budget für Ihre Ziele – ob nur für Google Ads oder ein kombiniertes Setup – strategisch sinnvoll ist.
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Kann ich mein Tracking später selbst erweitern oder anpassen?">
-            Ja, wir dokumentieren alle Schritte und bieten auf Wunsch Schulungen
-            an, damit du dein Tracking eigenständig weiterentwickeln kannst.
+          <FaqItem question="Wie stellen Sie sicher, dass das eingesetzte Tracking DSGVO-konform ist?">
+            Datenschutz und Transparenz haben für uns höchste Priorität. Wir sind Ihr technischer und strategischer Partner, um das Tracking (wie Meta CAPI oder Google Tags) so sauber und datensparsam wie möglich zu implementieren.
+            Wir sorgen für die korrekte technische Anbindung an Ihre bestehenden Consent-Management-Tools (Cookie-Banner). Wir bieten jedoch keine Rechtsberatung – die finale rechtliche Prüfung und Verantwortung liegt immer bei Ihnen bzw. Ihrem Datenschutzbeauftragten.
           </FaqItem>
         </BlurFade>
       </div>
@@ -932,14 +1097,13 @@ const CtaSection = () => (
   <section className="py-20 bg-white">
     <div className="container mx-auto px-6">
       <BlurFade direction="down" delay={0.25} inView>
-        <div className="bg-black text-white rounded-2xl p-12 text-center">
+        <div className="bg-[radial-gradient(circle,_#003153,_#324a5a)] text-white rounded-2xl p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold">
-            Bereit für messbares Wachstum?
+            Bereit für spürbaren Wandel?
           </h2>
           <BlurFade direction="down" delay={0.5} inView>
-            <p className="mt-4 max-w-xl mx-auto text-gray-300">
-              Starte jetzt unverbindlich und entdecke, wie sauberes Tracking
-              dein Marketing auf das nächste Level bringt.
+            <p className="mt-4 max-w-xl mx-auto text-white-300">
+              Gehen Sie heute noch einen Schritt weiter in die richtige Richtung? Gemeinsam gestalten wir die Zukunft Ihres Marketings.
             </p>
           </BlurFade>
           <BlurFade direction="down" delay={0.75} inView>
@@ -1064,12 +1228,38 @@ const Footer = () => (
           &copy; 2025 Congrads Agency. All rights reserved.
         </p>
         <div className="flex gap-6 mt-4 sm:mt-0">
-          <a href="#" className="text-gray-500 hover:text-black">
-            <Instagram />
-          </a>
-          <a href="#" className="text-gray-500 hover:text-black">
-            <Facebook />
-          </a>
+
+
+
+          <div className="flex gap-6 mt-4 sm:mt-0">
+            {/* Instagram */}
+            <a href="https://www.instagram.com/congradsagency/"
+              className="text-gray-500 hover:text-black"
+              aria-label="Instagram">
+              <FaInstagram className="w-6 h-6" />
+            </a>
+
+            {/* Facebook */}
+            <a href="https://www.facebook.com/profile.php?id=61564512660477"
+              className="text-gray-500 hover:text-black"
+              aria-label="Facebook">
+              <FaFacebookF className="w-6 h-6" />
+            </a>
+
+            {/* Pinterest */}
+            <a href="https://www.pinterest.com/congrads/"
+              className="text-gray-500 hover:text-black"
+              aria-label="Pinterest">
+              <FaPinterest className="w-6 h-6" />
+            </a>
+
+            {/* TikTok */}
+            <a href="https://www.tiktok.com/@congradsagency?lang=en"
+              className="text-gray-500 hover:text-black"
+              aria-label="TikTok">
+              <FaTiktok className="w-6 h-6" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1097,29 +1287,55 @@ export default function App() {
     return () => document.removeEventListener("click", handleAnchorClick);
   }, []);
   return (
-    <>
-      <style>{`
-                body {
-                    font-family: 'Inter', sans-serif;
-                    background-color: #ffffff;
-                    color: #111827;
-                }
-            `}</style>
-      <div className="bg-white">
-        <CookieBanner />
-        <Header />
-        <main>
-          <HeroSection />
-          <HowItWorksSection />
-          <FeaturesSection />
-          <WhyBothSection />
-          <TestimonialsSection />
-          <AboutUsSection />
-          <FaqSection />
-          <CtaSection />
-        </main>
-        <Footer />
+    // 'isolation-isolate' erstellt einen neuen Schichtungskontext.
+    // 'relative' wird für den 'absolute' Hintergrund benötigt.
+    <main className="relative min-h-screen isolation-isolate">
+
+      {/* 1. HINTERGRUND (z-index: -10) */}
+      <div className="absolute inset-0 -z-10">
+        <Silk
+          speed={5}
+          scale={1}
+          color="#003153" // Farbe hier anpassen
+          noiseIntensity={1.5}
+          rotation={0}
+        />
       </div>
-    </>
+
+      {/* 2. SEITENINHALT (z-index: relative) */}
+      <div className="relative">
+
+        {/* Dein <style jsx>-Block OHNE 'background-color: #ffffff;' */}
+        <style jsx>{`
+          body {
+            font-family: 'Inter', sans-serif;
+            color: #111827;
+          }
+        `}</style>
+
+        {/*
+          DIE LÖSUNG:
+          Dieser Div-Wrapper umschließt ALLEN Inhalt
+          und gibt ihm einen 80% weißen Hintergrund.
+        */}
+        <div className="bg-white/100">
+          <CookieBanner />
+          <Header />
+          {/* Das <main>-Tag selbst braucht keinen Hintergrund mehr */}
+          <main>
+            <HeroSection />
+            <HowItWorksSection />
+            <ServicesSection />
+            <FeaturesSection />
+            <TestimonialsSection />
+            <AboutUsSection />
+            <FaqSection />
+            <CtaSection />
+          </main>
+          <Footer />
+        </div>
+
+      </div>
+    </main>
   );
 }
