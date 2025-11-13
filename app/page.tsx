@@ -5,11 +5,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
 import {
-  Instagram,
-  Facebook,
-  Link,
-  BrainCircuit,
-  Sparkles,
   ChevronDown,
 } from "lucide-react";
 import { FaInstagram, FaFacebookF, FaPinterest, FaTiktok } from 'react-icons/fa';
@@ -23,7 +18,6 @@ import { useRef } from "react";
 import CookieBanner from "@/components/cookie/cookie-banner";
 import { FaChartSimple } from "react-icons/fa6";
 import { IoSparkles } from "react-icons/io5";
-import Silk from '@/components/Silk';
 
 type FeatureFlipCardProps = {
   title: string;
@@ -170,30 +164,7 @@ export const CardTilt: React.FC<CardTiltProps> = ({
   );
 };
 
-const TestimonialCard = ({
-  avatarText,
-  name,
-  role,
-  children,
-}: {
-  avatarText: string;
-  name: string;
-  role: string;
-  children: React.ReactNode;
-}) => (
-  <div className="bg-white p-8">
-    <p className="text-gray-800 italic">&quot;{children}&quot;</p>
-    <div className="flex items-center mt-6">
-      <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center font-bold text-gray-600">
-        {avatarText}
-      </div>
-      <div className="ml-4">
-        <p className="font-semibold text-black">{name}</p>
-        <p className="text-sm text-gray-500">{role}</p>
-      </div>
-    </div>
-  </div>
-);
+
 
 const FaqItem = ({
   question,
@@ -447,7 +418,7 @@ const HowItWorksSection = () => (
                 </div>
                 <h3 className="mt-6 text-xl font-semibold">Social Media Management</h3>
                 <p className="mt-2 text-center text-gray-600 block">
-                  Wir koordinieren die Planung, Erstellung und Verwaltung Ihrer Inhalte. Als "Digital Natives" wissen wir, wie man eine Community begeistert oder von Grund auf neu aufbaut. Wir schaffen gemeinsam eine moderne & gesunde Medienpräsenz für Ihre Marke. Die nicht nur gesehen wird, sondern auch ankommt.
+                  Wir koordinieren die Planung, Erstellung und Verwaltung Ihrer Inhalte. Als {`"Digital Natives"`} wissen wir, wie man eine Community begeistert oder von Grund auf neu aufbaut. Wir schaffen gemeinsam eine moderne & gesunde Medienpräsenz für Ihre Marke. Die nicht nur gesehen wird, sondern auch ankommt.
                 </p>
               </div>
             </a>
@@ -516,7 +487,7 @@ const ServicesSection = () => (
             </AuroraText>
           </h2>
           <p className="mt-2 text-gray-600">
-            "Kontinuität und Kreativität sind der Schlüssel zum Erfolg"
+            {`"Kontinuität und Kreativität sind der Schlüssel zum Erfolg"`}
           </p>
         </div>
 
@@ -574,11 +545,11 @@ const ServicesSection = () => (
               Eine moderne und gesunde Medienpräsenz ist kein Zufall, sondern das Ergebnis einer ganzheitlichen Strategie. Egal, ob Sie bei Null anfangen oder eine bestehende Community optimieren wollen: <strong>Wir sind Ihr strategischer Partner</strong> für das Management Ihrer Social-Media-Kanäle – von der Konzeption bis zur Community-Interaktion.
             </p>
             <p className="mt-4 text-gray-600">
-              Unser <em>"Alles-aus-einer-Hand"</em>-Ansatz umfasst:
+              Unser <em>{`"Alles-aus-einer-Hand"`}</em>-Ansatz umfasst:
             </p>
             <ul className="mt-4 text-gray-600 list-disc list-inside">
               <li>
-                <strong>Individuelle Strategie & Planung:</strong> Wir entwickeln mit Ihnen gemeinsam einen individuellen Redaktionsplan, der exakt auf Ihre Ziele zugeschnitten ist. Als <em>"Digital Natives"</em> verstehen wir die Dynamik von Trends und integrieren diese, wo es für Ihre Marke strategisch sinnvoll ist.
+                <strong>Individuelle Strategie & Planung:</strong> Wir entwickeln mit Ihnen gemeinsam einen individuellen Redaktionsplan, der exakt auf Ihre Ziele zugeschnitten ist. Als <em>{`"Digital Natives"`}</em> verstehen wir die Dynamik von Trends und integrieren diese, wo es für Ihre Marke strategisch sinnvoll ist.
               </li>
               <li className="mt-2">
                 <strong>Content-Erstellung (Full-Service):</strong> Unser Team setzt die Content-Erstellung für Sie um – immer in enger Abstimmung mit Ihrer Markenstimme. Wir designen zeitgemäße Creatives und Visuals, verfassen SEO-optimierte Copies und entwickeln eine fundierte Hashtag-Strategie.
@@ -606,7 +577,7 @@ const ServicesSection = () => (
             </AuroraText>
           </h2>
           <p className="mt-2 text-gray-600">
-            "Egal was Sie bewerben wollen – wir bringen Ihre Botschaft mit kreativer Strategie auf den Markt."
+            {`"Egal was Sie bewerben wollen – wir bringen Ihre Botschaft mit kreativer Strategie auf den Markt."`}
           </p>
         </div>
         <div className="flex flex-col md:flex-row items-center gap-4">
@@ -629,7 +600,7 @@ const ServicesSection = () => (
             </p>
             <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6">TikTok Ads</h3>
             <p className="mt-4 text-gray-600">
-              Als die schnelllebigste Social-Media-Plattform ist TikTok für maximale Impressionen und Clicks heute unersetzlich. Als "Digital Natives" verstehen wir nicht nur Trends, sondern erstellen für Sie authentische, performende Creatives, die nicht wie Fremdkörper in Ihrer Nische wirken, sondern Ihre Zielgruppe wirklich erreichen.
+              Als die schnelllebigste Social-Media-Plattform ist TikTok für maximale Impressionen und Clicks heute unersetzlich. Als {`Digital Natives"`} verstehen wir nicht nur Trends, sondern erstellen für Sie authentische, performende Creatives, die nicht wie Fremdkörper in Ihrer Nische wirken, sondern Ihre Zielgruppe wirklich erreichen.
             </p>
             <h3 className="text-2xl md:text-3xl font-semibold text-black mt-6">Pinterest Ads</h3>
             <p className="mt-4 text-gray-600">
@@ -702,7 +673,7 @@ const ServicesSection = () => (
             </AuroraText>
           </h2>
           <p className="mt-2 text-gray-600">
-            "Performance ist kein Glücksspiel. Leiden Sie nicht länger unter Datenverlust."
+            {`"Performance ist kein Glücksspiel. Leiden Sie nicht länger unter Datenverlust."`}
           </p>
         </div>
         <div className="flex flex-col xl:flex-row items-center gap-9">
@@ -793,7 +764,7 @@ const FeaturesSection = () => (
       <div className="mt-12 flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
           <FeatureFlipCard title="Meta Pixel - Dein Spion im Browser">
-            Das Meta Pixel ist ein Code-Segment auf Ihrer Website. Es funktioniert wie ein Blick ins 'Schaufenster': Es erfasst, was Besucher direkt im Browser tun. Welche Produkte sehen sie an? Was legen sie in den Warenkorb? Diese Informationen sind entscheidend, damit Meta Ihre Anzeigen an kaufbereite Zielgruppen ausspielen kann.
+            Das Meta Pixel ist ein Code-Segment auf Ihrer Website. Es funktioniert wie ein Blick ins {`'Schaufenster'`}: Es erfasst, was Besucher direkt im Browser tun. Welche Produkte sehen sie an? Was legen sie in den Warenkorb? Diese Informationen sind entscheidend, damit Meta Ihre Anzeigen an kaufbereite Zielgruppen ausspielen kann.
           </FeatureFlipCard>
           <FeatureFlipCard title="Conversions API: Dein Server spricht mit Meta">
             Die Conversions API (CAPI) ist die strategische Verstärkung. Sie schafft eine direkte und unsichtbare Verbindung von Ihrem Shop-System (Ihrem Server) zu Meta. Findet ein Kauf statt, meldet Ihr Server dies auf direktem Weg – sicher und zuverlässig. Diese serverseitige Verbindung kann von Ad-Blockern nicht beeinträchtigt werden.
@@ -855,7 +826,7 @@ const TestimonialsSection = () => {
 };
 
 
-const AboutUsSection = () => (
+const AboutUsSection = () => 
   <section id="about-us" className="py-20 bg-gray-50/70 border-y" style={{ scrollMarginTop: "60px" }}>
     <div className="container mx-auto px-6 max-w-4xl">
       <BlurFade direction="down" delay={0.25} inView>
@@ -876,7 +847,7 @@ const AboutUsSection = () => (
             <h3 className="font-semibold text-lg text-black">Unsere Mission</h3>
             <p className="text-gray-600">
               Unsere Mission ist es, Sie einen Schritt weiterzubringen und dies durch eine Marketingbrücke der Generationen. Viele Unternehmen verstehen den ständigen Wandel nicht mehr und lassen unsere Generation marketingtechnisch außer Acht.
-              Unser Alter ist unser größter strategischer Vorteil: Wir sind die Generation von heute. Basierend auf 100% Transparenz und gemeinsamem Lernen, helfen wir Ihnen, jede Generation zu erreichen – von "New School" bis "Old School".
+              Unser Alter ist unser größter strategischer Vorteil: Wir sind die Generation von heute. Basierend auf 100% Transparenz und gemeinsamem Lernen, helfen wir Ihnen, jede Generation zu erreichen – von {`"New School"`} bis {`"Old School"`}.
             </p>
             <h3 className="font-semibold text-lg text-black mt-6">Unser Team</h3>
             <p className="text-gray-600">
@@ -946,7 +917,7 @@ const AboutUsSection = () => (
                 </div>
               </div>
               <div className="px-4 pb-3 text-xs text-gray-600 italic">
-                "Haben für diese Agentur fast unser Abi geschmissen – keine Sorge, wir haben bestanden."
+                {`"Haben für diese Agentur fast unser Abi geschmissen – keine Sorge, wir haben bestanden."`}
               </div>
               {/* Styles */}
               <style jsx>{`
@@ -1027,7 +998,7 @@ const AboutUsSection = () => (
       </div>
     </div>
   </section>
-);
+;
 
 
 const FaqSection = () => (
@@ -1049,26 +1020,26 @@ const FaqSection = () => (
       <div className="mt-12 space-y-4">
         <BlurFade direction="down" delay={0.25} inView>
           <FaqItem question="Sie sind ja noch sehr jung. Warum ist das ein Vorteil und kein Nachteil für mich?">
-            Unser Alter ist unser größter strategischer Vorteil. Wir sind die Generation von heute. Näher am Geschehen und am Wandel kann niemand sein. Unsere Arbeit besteht nicht aus "stupider, gelernter Anwendung", sondern aus der agilen Kombination von Kreativität und Strategie. Kurz gesagt: Wir sind der Wandel.
+            Unser Alter ist unser größter strategischer Vorteil. Wir sind die Generation von heute. Näher am Geschehen und am Wandel kann niemand sein. Unsere Arbeit besteht nicht aus {`"stupider, gelernter Anwendung"`}, sondern aus der agilen Kombination von Kreativität und Strategie. Kurz gesagt: Wir sind der Wandel.
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
           <FaqItem question="Funktioniert Ihre 'Marketingbrücke der Generationen' auch für traditionelle Branchen, oder liegt Ihr Fokus nur auf der Generation Z?">
-            Wir sehen uns als Dolmetscher der Generationen. Unsere Mission ist es, eine Verbindung zu schaffen. Das bedeutet, wir verstehen nicht nur die "neue Welt" (Gen Z), sondern können Ihre traditionelle Branchen-Expertise aufnehmen und so übersetzen, dass sie verstanden wird.
-            So schlagen wir die Brücke zwischen "New School" und "Old School" und stellen sicher, dass Ihre Botschaft bei jeder Generation ankommt.
+            Wir sehen uns als Dolmetscher der Generationen. Unsere Mission ist es, eine Verbindung zu schaffen. Das bedeutet, wir verstehen nicht nur die {`"neue Welt"`} (Gen Z), sondern können Ihre traditionelle Branchen-Expertise aufnehmen und so übersetzen, dass sie verstanden wird.
+            So schlagen wir die Brücke zwischen {`"New School"`} und {`"Old School"`} und stellen sicher, dass Ihre Botschaft bei jeder Generation ankommt.
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
           <FaqItem question="Wie stellen Sie sicher, dass Sie unsere Markenstimme treffen? Wir wollen nicht plötzlich, wie Teenager klingen.">
-            Das ist ein Kernpunkt unserer "Junge Strategen"-Identität. "Jung" bedeutet für uns "Kreativität", "Stratege" bedeutet "Professionalität".
-            Durch unseren partnerschaftlichen Ansatz und das "gemeinsame Lernen" stellen wir durch 100% Transparenz sicher, dass wir Ihre Markenstimme treffen und nicht unsere eigene durchsetzen. Wir sorgen dafür, dass die junge Generation Sie versteht – nicht, dass Sie wie die junge Generation klingen.
+            Das ist ein Kernpunkt unserer {`"Junge Strategen"`}-Identität. {`"Jung" bedeutet für uns "Kreativität"`}, {`"Stratege" bedeutet "Professionalität"`}.
+            Durch unseren partnerschaftlichen Ansatz und das {`"gemeinsame Lernen"`} stellen wir durch 100% Transparenz sicher, dass wir Ihre Markenstimme treffen und nicht unsere eigene durchsetzen. Wir sorgen dafür, dass die junge Generation Sie versteht – nicht, dass Sie wie die junge Generation klingen.
 
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
           <FaqItem question="Wie transparent ist der Prozess? Meine letzte Agentur hat mich von allem ausgeschlossen.">
-            Transparenz ist die Basis unserer "gemeinsames Lernen"-Philosophie. Wir sind davon überzeugt, dass eine Herausforderung nur durch gemeinsames Anpacken bewältigt werden kann. Sie werden nicht ausgeschlossen, sondern sind Teil des Teams.
-            Wie ein Mitglied unseres Teams sagt: "Teamwork makes it dreamwork." ~ Angelo
+            Transparenz ist die Basis unserer {`"gemeinsames Lernen"`}-Philosophie. Wir sind davon überzeugt, dass eine Herausforderung nur durch gemeinsames Anpacken bewältigt werden kann. Sie werden nicht ausgeschlossen, sondern sind Teil des Teams.
+            Wie ein Mitglied unseres Teams sagt: {`"Teamwork makes it dreamwork."`} ~ Angelo
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
@@ -1287,55 +1258,29 @@ export default function App() {
     return () => document.removeEventListener("click", handleAnchorClick);
   }, []);
   return (
-    // 'isolation-isolate' erstellt einen neuen Schichtungskontext.
-    // 'relative' wird für den 'absolute' Hintergrund benötigt.
-    <main className="relative min-h-screen isolation-isolate">
-
-      {/* 1. HINTERGRUND (z-index: -10) */}
-      <div className="absolute inset-0 -z-10">
-        <Silk
-          speed={5}
-          scale={1}
-          color="#003153" // Farbe hier anpassen
-          noiseIntensity={1.5}
-          rotation={0}
-        />
+    <>
+      <style>{`
+    body {
+          font-family: 'Inter', sans-serif;
+          background-color: #ffffff;
+          color: #111827;
+      } 
+    `}</style>
+      <div className="bg-white/100">
+        <CookieBanner />
+        <Header />
+        <main>
+          <HeroSection />
+          <HowItWorksSection />
+          <ServicesSection />
+          <FeaturesSection />
+          <TestimonialsSection />
+          <AboutUsSection />
+          <FaqSection />
+          <CtaSection />
+        </main>
+        <Footer />
       </div>
-
-      {/* 2. SEITENINHALT (z-index: relative) */}
-      <div className="relative">
-
-        {/* Dein <style jsx>-Block OHNE 'background-color: #ffffff;' */}
-        <style jsx>{`
-          body {
-            font-family: 'Inter', sans-serif;
-            color: #111827;
-          }
-        `}</style>
-
-        {/*
-          DIE LÖSUNG:
-          Dieser Div-Wrapper umschließt ALLEN Inhalt
-          und gibt ihm einen 80% weißen Hintergrund.
-        */}
-        <div className="bg-white/100">
-          <CookieBanner />
-          <Header />
-          {/* Das <main>-Tag selbst braucht keinen Hintergrund mehr */}
-          <main>
-            <HeroSection />
-            <HowItWorksSection />
-            <ServicesSection />
-            <FeaturesSection />
-            <TestimonialsSection />
-            <AboutUsSection />
-            <FaqSection />
-            <CtaSection />
-          </main>
-          <Footer />
-        </div>
-
-      </div>
-    </main>
+    </>
   );
 }
