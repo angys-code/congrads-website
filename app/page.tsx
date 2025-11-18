@@ -206,7 +206,7 @@ const Header = () => (
     />
     {/* End Google Tag Manager */}
 
-    <meta name="p:domain_verify" content="d8aa19b67752b9c1fcc22d6a8ff77c5f"/>
+    <meta name="p:domain_verify" content="d8aa19b67752b9c1fcc22d6a8ff77c5f" />
 
     <div className="container mx-auto px-6 py-4 flex justify-between items-center">
       <ScrollProgress className="top-[65px]" />
@@ -1050,10 +1050,11 @@ const FaqSection = () => (
           </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
-          <FaqItem question="Gibt es ein Mindest-Werbebudget, das Sie für Ads voraussetzen?">
-            Nein. Wir definieren kein starres Mindestbudget. Der nötige Aufwand ist abhängig von den Zielen, die Sie erreichen wollen.
-            In einem transparenten Erstgespräch klären wir, welches Budget für Ihre Ziele – ob nur für Google Ads oder ein kombiniertes Setup – strategisch sinnvoll ist.
-          </FaqItem>
+            <FaqItem question="Setzen Sie in Ihrer Agentur Künstliche Intelligenz (KI) ein?">
+            Ja. Wir sind mit KI aufgewachsen und nutzen sie als das, was sie ist: ein extrem leistungsfähiges Werkzeug, aber kein Ersatz für den Menschen. KI ist unschlagbar im Abrufen von Wissen, kann aber nicht das emotionale "Warum" verstehen.
+            <br /><br />
+            KI ist der Werkzeugkasten, aber wir sind der Architekt mit dem Plan. KI generiert Vorschläge, keine Resultate. Bei uns bekommen Sie das Beste aus beiden Welten: Experte + KI. Denn am Ende versteht nur der Mensch den Menschen.
+            </FaqItem>
         </BlurFade>
         <BlurFade direction="down" delay={0.25} inView>
           <FaqItem question="Wie stellen Sie sicher, dass das eingesetzte Tracking DSGVO-konform ist?">
