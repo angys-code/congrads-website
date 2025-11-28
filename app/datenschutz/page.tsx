@@ -10,23 +10,29 @@ export default function Datenschutz() {
         </h1>
 
         <section className="mt-6 text-gray-700 space-y-6">
+          <h2 className="font-semibold text-black">
+            1. Datenschutz auf einen Blick
+          </h2>
           <p>
-            Diese Datenschutzerklärung informiert dich darüber, welche
-            personenbezogenen Daten wir im Zusammenhang mit dieser Website
-            (https://www.congrads.de bzw. die lokale Entwicklungs-URL) erheben,
-            wie wir sie verarbeiten und welche Rechte du hast. Sie bezieht sich
-            auf alle auf der Seite sichtbaren Funktionen (z. B. Kontakt via
-            E‑Mail, Cookie-Banner, Social-Links, Tracking-Integrationen,
-            Bild-Uploads in /public). Bitte lies sie aufmerksam.
+            Allgemeine Hinweise Die folgenden Hinweise geben einen einfachen
+            Überblick darüber, was mit Ihren personenbezogenen Daten passiert,
+            wenn Sie diese Website besuchen. Personenbezogene Daten sind alle
+            Daten, mit denen Sie persönlich identifiziert werden können.
           </p>
 
-          <h2 className="mt-6 font-semibold text-black">
-            Verantwortliche Stelle
+          <h2 className="font-semibold text-black">
+            Wer ist verantwortlich für die Datenerfassung auf dieser Website?
           </h2>
+          <p>
+            Die Datenverarbeitung auf dieser Website erfolgt durch den
+            Websitebetreiber:
+          </p>
           <p>
             Congrads Agency
             <br />
-            Wildparkstr. 19B, 63456 Hanau
+            Wildparkstr. 19B
+            <br />
+            63456 Hanau
             <br />
             Deutschland
             <br />
@@ -36,251 +42,201 @@ export default function Datenschutz() {
             </a>
           </p>
 
-          <h2 className="font-semibold text-black">Kontakt Datenschutz</h2>
+          <h2 className="font-semibold text-black">Wie erfassen wir Ihre Daten?</h2>
           <p>
-            Wenn du Fragen zur Verarbeitung deiner personenbezogenen Daten hast
-            oder deine Rechte geltend machen möchtest, schreibe uns an die oben
-            genannte E‑Mail-Adresse.
+            Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese
+            mitteilen (z.B. durch Kontaktaufnahme per E-Mail). Andere Daten
+            werden automatisch oder nach Ihrer Einwilligung beim Besuch der
+            Website durch unsere IT-Systeme erfasst. Das sind vor allem technische
+            Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des
+            Seitenaufrufs) sowie Analyse-Daten zu Ihrem Verhalten auf unserer
+            Website (z.B. Klicks, Scrolltiefe).
           </p>
 
-          <h2 className="font-semibold text-black">Welche Daten wir erheben</h2>
+          <h2 className="font-semibold text-black">Wofür nutzen wir Ihre Daten?</h2>
+          <p>
+            Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung
+            der Website zu gewährleisten. Andere Daten nutzen wir zur Analyse
+            Ihres Nutzerverhaltens, um unser Angebot zu optimieren und Ihnen
+            relevante Inhalte (auch auf Plattformen Dritter wie Meta oder
+            Pinterest) anzuzeigen.
+          </p>
+
+          <h2 className="font-semibold text-black">
+            2. Hosting und Content Delivery Networks (CDN)
+          </h2>
+          <h3 className="font-semibold text-black">Hosting bei Vercel</h3>
+          <p>
+            Wir hosten unsere Website bei Vercel Inc., 340 S Lemon Ave #4133,
+            Walnut, CA 91789, USA. Vercel ist ein Anbieter für modernes
+            Webhosting und Serverless-Funktionen. Wenn Sie unsere Website
+            besuchen, werden Ihre personenbezogenen Daten (z.B. IP-Adressen in
+            Logfiles) auf den Servern von Vercel verarbeitet. Die Verwendung von
+            Vercel erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren
+            potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und
+            im Interesse einer sicheren, schnellen und effizienten Bereitstellung
+            unseres Online-Angebots durch einen professionellen Anbieter (Art. 6
+            Abs. 1 lit. f DSGVO). Vercel überträgt Daten in die USA. Wir haben
+            mit Vercel einen Vertrag zur Auftragsverarbeitung (AVV) sowie
+            Standardvertragsklauseln abgeschlossen, um die Einhaltung der
+            europäischen Datenschutzstandards zu gewährleisten.
+          </p>
+
+          <h3 className="font-semibold text-black">Domain über IONOS</h3>
+          <p>
+            Unsere Domain wird verwaltet von IONOS SE, Elgendorfer Str. 57,
+            56410 Montabaur. IONOS verarbeitet dabei Bestandsdaten zur
+            Verwaltung der Domain. Weitere Informationen entnehmen Sie der
+            Datenschutzerklärung von IONOS.
+          </p>
+
+          <h2 className="font-semibold text-black">
+            3. Allgemeine Hinweise und Pflichtinformationen
+          </h2>
+          <h3 className="font-semibold text-black">Datenschutz</h3>
+          <p>
+            Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen
+            Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten
+            vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften
+            sowie dieser Datenschutzerklärung.
+          </p>
+
+          <h3 className="font-semibold text-black">
+            Widerruf Ihrer Einwilligung zur Datenverarbeitung
+          </h3>
+          <p>
+            Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen
+            Einwilligung möglich (z.B. Tracking via Meta Pixel oder Google
+            Analytics). Sie können eine bereits erteilte Einwilligung jederzeit
+            widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns
+            oder die Anpassung Ihrer Einstellungen in unserem Cookie-Manager
+            (&quot;Cookie-Einstellungen&quot; im Footer der Website).
+          </p>
+
+          <h3 className="font-semibold text-black">
+            Beschwerderecht bei der zuständigen Aufsichtsbehörde
+          </h3>
+          <p>
+            Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein
+            Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem
+            Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder
+            des Orts des mutmaßlichen Verstoßes zu.
+          </p>
+
+          <h3 className="font-semibold text-black">
+            SSL- bzw. TLS-Verschlüsselung
+          </h3>
+          <p>
+            Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der
+            Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung.
+            Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile
+            des Browsers von „http://“ auf „https://“ wechselt und an dem
+            Schloss-Symbol in Ihrer Browserzeile.
+          </p>
+
+          <h2 className="font-semibold text-black">
+            4. Datenerfassung auf dieser Website
+          </h2>
+          <h3 className="font-semibold text-black">Cookies &amp; Local Storage</h3>
+          <p>
+            Unsere Website verwendet sogenannte &quot;Cookies&quot; und ähnliche
+            Speichertechnologien (Local Storage). Cookies richten auf Ihrem
+            Rechner keinen Schaden an und enthalten keine Viren. Sie dienen dazu,
+            unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen.
+            Wir setzen technisch notwendige Cookies ein (Art. 6 Abs. 1 lit. f
+            DSGVO), um den Betrieb der Website zu gewährleisten (z.B. Speicherung
+            Ihrer Cookie-Einwilligung). Alle anderen Cookies (für Analyse und
+            Marketing) werden nur mit Ihrer ausdrücklichen Einwilligung (Art. 6
+            Abs. 1 lit. a DSGVO) gesetzt. Diese Einwilligung können Sie jederzeit
+            über unseren Cookie-Banner verwalten.
+          </p>
+
+          <h3 className="font-semibold text-black">Kontakt per E-Mail</h3>
+          <p>
+            Wenn Sie uns per E-Mail kontaktieren, wird Ihre E-Mail inklusive der
+            von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage
+            und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten
+            geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung
+            dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO,
+            sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder
+            zur Durchführung vorvertraglicher Maßnahmen erforderlich ist.
+          </p>
+
+          <h2 className="font-semibold text-black">
+            5. Analyse-Tools und Werbung
+          </h2>
+          <h3 className="font-semibold text-black">Google Tag Manager</h3>
+          <p>
+            Wir setzen den Google Tag Manager ein. Anbieter ist die Google
+            Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Der
+            Google Tag Manager ist ein Hilfsdienst und verarbeitet selbst keine
+            personenbezogenen Daten. Er sorgt jedoch für das Auslösen anderer Tags
+            (wie Google Analytics oder Meta Pixel), die ihrerseits unter
+            Umständen Daten erfassen. Wir weisen in dieser Datenschutzerklärung
+            gesondert auf diese Dienste hin. Die Nutzung erfolgt auf Grundlage von
+            Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer einfachen
+            Verwaltung von Website-Skripten).
+          </p>
+
+          <h3 className="font-semibold text-black">Google Analytics 4 (GA4)</h3>
+          <p>
+            Diese Website nutzt Funktionen des Webanalysedienstes Google
+            Analytics 4. Anbieter ist die Google Ireland Limited. Google
+            Analytics ermöglicht es uns, das Verhalten der Websitebesucher zu
+            analysieren. Hierbei erfassen wir verschiedene Nutzungsdaten, wie
+            z.B. Seitenaufrufe, Verweildauer, Betriebssysteme und Herkunft. Des
+            Weiteren erfassen wir spezifische Interaktionsereignisse zur
+            Optimierung unserer Nutzererfahrung (&quot;Event-Tracking&quot;):
+          </p>
           <ul className="list-disc pl-5 text-gray-700">
             <li>
-              Verbindungs- und Nutzungsdaten (z. B. IP-Adresse, Zugriffszeit,
-              User-Agent, Referrer).
+              Klicks auf Buttons und Links (z.B. zu unseren Social Media Profilen)
             </li>
+            <li>Scrolltiefe (30%, 60%, 90%)</li>
             <li>
-              Technische Daten (Browsertyp, Bildschirmgröße, verwendetes
-              Betriebssystem).
-            </li>
-            <li>
-              Inhalte, die du uns freiwillig übermittelst (z. B. E‑Mail via
-              mailto: links).
-            </li>
-            <li>
-              Einwilligungsstatus und Cookie-/LocalStorage-Einstellungen (siehe
-              Cookie-Banner).
-            </li>
-            <li>
-              Eventuelle weitere Daten, die du bei einer Kontaktaufnahme
-              freiwillig nennst.
+              Interaktionen mit spezifischen Elementen (z.B. &quot;Dienstleistungen&quot;,
+              &quot;Über Uns&quot;)
             </li>
           </ul>
-
-          <h2 className="font-semibold text-black">
-            Cookies &amp; LocalStorage
-          </h2>
           <p>
-            Wir setzen Cookies und Web‑Storage (localStorage) ein, um die
-            Funktionalität der Website sicherzustellen und deine Einstellungen
-            zu speichern.
-          </p>
-          <p className="text-sm text-gray-600">
-            Konkret speichert das Cookie-Banner deine Einwilligungspräferenzen
-            in localStorage unter dem Schlüssel{" "}
-            <code>congrads_cookie_consent_v1</code>. Wenn du zustimmst, werden
-            zusätzliche Tracking-Skripte (z. B. Meta Pixel) geladen; bei
-            Nicht-Zustimmung bleiben diese deaktiviert.
-          </p>
-
-          <h2 className="font-semibold text-black">Cookie-Banner / Consent</h2>
-          <p>
-            Beim ersten Besuch erscheint ein Cookie-Banner mit den Optionen
-            „Alle akzeptieren“, „Ablehnen“ und „Einstellungen“. Deine Auswahl
-            wird lokal gespeichert und kann jederzeit über die Einstellungen auf
-            dieser Website geändert werden (sofern eine entsprechende Steuerung
-            sichtbar ist). Technisch notwendige Cookies sind unabhängig von
-            einer Einwilligung aktiv, da sie für den Betrieb erforderlich sind.
-          </p>
-
-          <h2 className="font-semibold text-black">Tracking &amp; Analyse</h2>
-          <p>
-            Wir nutzen keine eingebetteten Kontaktformulare, aber es gibt
-            Mailto-Links (z. B. <code>mailto:contact@congrads.de</code>) — das
-            Versenden einer E‑Mail erfolgt über deinen E‑Mail‑Client und ist
-            nicht durch uns technisch protokolliert außer in unseren
-            Postfächern.
+            Die IP-Anonymisierung ist bei Google Analytics 4 standardmäßig
+            aktiviert. Ihre IP-Adresse wird von Google innerhalb der EU/EWR vor
+            der Übermittlung gekürzt. Rechtsgrundlage: Die Nutzung erfolgt auf
+            Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) über unseren
+            Cookie-Banner.
           </p>
 
           <h3 className="font-semibold text-black">
-            Meta Pixel (Facebook/Meta)
+            Meta Pixel &amp; Conversions API (CAPI)
           </h3>
           <p>
-            Diese Website kann das Meta Pixel verwenden. Das Meta Pixel ist ein
-            Tracking-Skript von Meta Platforms, mit dem das Nutzerverhalten
-            gemessen wird. Das Pixel wird nur geladen, wenn du
-            Marketing‑/Tracking‑Cookies aktivierst. Die Datenübertragung an Meta
-            erfolgt dann in der Form und unter den Bedingungen, die Meta
-            vorgibt. Meta kann diese Daten mit weiteren Informationen aus
-            anderen Quellen zusammenführen.
-          </p>
-          <p className="text-sm text-gray-600">
-            Wenn du auf der Seite etwas bestellt hast, können wir das Ereignis
-            als Client‑Event (via Pixel) und zusätzlich serverseitig per
-            Conversion API (CAPI) an Meta übertragen. Um Doppelzählungen zu
-            vermeiden, verwenden wir ein gemeinsames <em>event_id</em> für die
-            Client- und Server-Übertragung; Meta führt anschließende
-            Deduplizierung durch. Personenbezogene Daten (z. B. E‑Mail, Telefon)
-            werden vor dem Versand an Meta gehasht (SHA‑256). Die serverseitige
-            Übermittlung erfolgt nur, wenn die rechtliche Grundlage vorliegt (in
-            der Regel deine Einwilligung für Marketing).
+            Unsere Website verwendet zur Konversionsmessung das &quot;Meta Pixel&quot;
+            sowie die serverseitige &quot;Conversions API&quot; (CAPI) von Meta
+            Platforms Ireland Limited. Diese Technologien ermöglichen es uns, das
+            Verhalten der Seitenbesucher nachzuverfolgen, nachdem diese durch
+            Klick auf eine Facebook- oder Instagram-Werbeanzeige auf unsere
+            Website weitergeleitet wurden. Zudem werden Events (wie Seitenaufrufe)
+            serverseitig übertragen, um die Datenqualität unabhängig von
+            Browser-Einstellungen sicherzustellen. Wir nutzen dies, um die
+            Wirksamkeit der Meta-Werbeanzeigen auszuwerten und Zielgruppen für
+            Werbung zu optimieren. Die erhobenen Daten sind für uns anonym. Meta
+            kann diese Daten jedoch mit Ihrem Facebook/Instagram-Profil verbinden
+            und für eigene Werbezwecke nutzen. Rechtsgrundlage: Die Nutzung erfolgt
+            ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a
+            DSGVO).
           </p>
 
-          <h3 className="font-semibold text-black">
-            Facebook Conversions API (CAPI)
-          </h3>
+          <h3 className="font-semibold text-black">Pinterest Tag</h3>
           <p>
-            Die Conversions API sendet Ereignisse sicher vom Server an Meta
-            (Graph API). Für die Verwendung benötigen wir einen serverseitigen
-            Access Token. Serverseitige Ereignisse werden nur bei Vorliegen der
-            jeweiligen Einwilligung bzw. Rechtgrundlage weitergeleitet.
+            Auf unserer Website verwenden wir das Conversion Tracking Tag der
+            Pinterest Europe Ltd. Mithilfe des Pinterest Tags können wir Nutzern
+            unserer Website, die sich auch für unsere Inhalte auf Pinterest
+            interessiert haben, relevante Werbung anzeigen und nachvollziehen, ob
+            Pinterest-Nutzer nach dem Klick auf eine Anzeige auf unserer Seite eine
+            bestimmte Handlung ausgeführt haben (z.B. Seitenaufruf). Rechtsgrundlage:
+            Die Nutzung erfolgt ausschließlich auf Grundlage Ihrer Einwilligung (Art.
+            6 Abs. 1 lit. a DSGVO).
           </p>
-
-          <h2 className="font-semibold text-black">
-            Server-Logs, Hosting &amp; Domain
-          </h2>
-          <p>
-            Zur Verfügungstellung der Website speichern unsere Server
-            automatisch Verbindungsdaten (Server-Logs) wie IP‑Adresse, Zeitpunkt
-            des Zugriffs, aufgerufene URL und HTTP‑Status. Diese Daten verwenden
-            wir zur Sicherstellung des Betriebs, zur Fehleranalyse und zur
-            Sicherheitsüberwachung.
-          </p>
-          <p>
-            Hosting: Wir betreiben die Website auf der Infrastruktur von Vercel
-            (Vercel, Inc.). Vercel verarbeitet Daten in unserem Auftrag als
-            Auftragsverarbeiter. Informationen zu den Datenverarbeitungs‑
-            aktivitäten von Vercel sowie zu möglichen Datenübermittlungen in
-            Drittländer findest du in den Datenschutzhinweisen von Vercel.
-            Soweit Daten in Länder außerhalb der EU/des EWR übermittelt werden,
-            treffen wir geeignete Maßnahmen (z. B. Standardvertragsklauseln) um
-            ein angemessenes Datenschutzniveau sicherzustellen.
-          </p>
-          <p>
-            Domain / Registrar: Die Domain ist bei IONOS (1&1 IONOS SE)
-            registriert. Bitte beachte, dass bei der Domain-Registrierung
-            bestimmte Kontaktdaten (z. B. zur Eintragung in WHOIS-Listen)
-            öffentlich einsehbar sein können. Nähere Informationen hierzu sowie
-            zur Datenverarbeitung durch IONOS findest du in den
-            Datenschutzhinweisen des Registrars.
-          </p>
-
-          <h2 className="font-semibold text-black">
-            Drittanbieter / Bibliotheken
-          </h2>
-          <p>
-            Die Website nutzt verschiedene Open-Source-Bibliotheken (z. B.
-            <em>lucide-react</em>, <em>rough-notation</em>, Tailwind CSS) zur
-            Darstellung und Funktion. Diese Bibliotheken werden lokal im Build
-            ausgeliefert und senden standardmäßig keine Nutzerdaten an ihre
-            Anbieter. Falls externe Ressourcen (z. B. Webfonts von einem CDN)
-            eingebunden werden, kann dies eine Verbindung zu Dritten auslösen —
-            siehe Abschnitt &quot;Webfonts / Externe Inhalte&quot; weiter unten.
-          </p>
-
-          <h2 className="font-semibold text-black">
-            Webfonts / Externe Inhalte
-          </h2>
-          <p>
-            Auf der Website wird die Schriftfamilie <em>Inter</em> per CSS
-            verwendet. Falls du Webfonts oder andere Ressourcen von externen
-            Anbietern (z. B. Google Fonts) laden möchtest, prüfe bitte, ob diese
-            Einbindung datenschutzkonform erfolgt. Externe Ressourcen können
-            beim Laden ggf. Informationen an die Drittanbieter übermitteln (z.
-            B. IP-Adresse).
-          </p>
-
-          <h2 className="font-semibold text-black">Kontakt per E‑Mail</h2>
-          <p>
-            Wenn du uns per E‑Mail kontaktierst, werden die von dir
-            übermittelten personenbezogenen Daten zum Zweck der Bearbeitung
-            deiner Anfrage gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 S.1
-            lit. f DSGVO (berechtigtes Interesse an der Beantwortung von
-            Anfragen) oder Art. 6 Abs. 1 lit. b DSGVO, wenn aus der Anfrage ein
-            Vertragsverhältnis entsteht.
-          </p>
-
-          <h2 className="font-semibold text-black">Speicherdauer</h2>
-          <p>
-            Wir speichern personenbezogene Daten nur so lange, wie es für die
-            Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen
-            bestehen (z. B. steuerrechtliche Aufbewahrungsfristen).
-            Personenbezogene Daten aus Supportanfragen werden in der Regel für
-            die Dauer von 3 Jahren aufbewahrt, sofern keine gesetzlichen
-            Pflichten etwas anderes vorschreiben.
-          </p>
-
-          <h2 className="font-semibold text-black">
-            Weitergabe / Auftragsverarbeitung
-          </h2>
-          <p>
-            Wir geben personenbezogene Daten nur weiter, wenn dies zur
-            Vertragserfüllung, zur Rechtsverfolgung oder aufgrund gesetzlicher
-            Verpflichtungen erforderlich ist. Externe Dienstleister (z. B.
-            Hosting-Provider, Zahlungsabwickler, E‑Mail-Provider) werden als
-            Auftragsverarbeiter gemäß Art. 28 DSGVO eingesetzt und vertraglich
-            gebunden.
-          </p>
-
-          <h2 className="font-semibold text-black">Rechtsgrundlagen</h2>
-          <p>
-            Die Rechtsgrundlagen der Datenverarbeitung ergeben sich aus der
-            DSGVO: Einwilligung (Art. 6 Abs. 1 lit. a), Erfüllung eines Vertrags
-            (Art. 6 Abs. 1 lit. b), rechtliche Verpflichtungen (Art. 6 Abs. 1
-            lit. c) sowie berechtigtes Interesse (Art. 6 Abs. 1 lit. f).
-          </p>
-
-          <h2 className="font-semibold text-black">Deine Rechte</h2>
-          <p>
-            Du hast das Recht auf Auskunft über die zu deiner Person
-            gespeicherten Daten, Berichtigung falscher Daten, Löschung,
-            Einschränkung der Verarbeitung sowie auf Datenübertragbarkeit. Du
-            kannst erteilte Einwilligungen jederzeit mit Wirkung für die Zukunft
-            widerrufen. Zur Ausübung deiner Rechte schreibe an
-            <a href="mailto:contact@congrads.de" className="text-blue-600">
-              {" "}
-              contact@congrads.de
-            </a>
-            .
-          </p>
-
-          <h2 className="font-semibold text-black">Beschwerderecht</h2>
-          <p>
-            Du hast das Recht, bei einer Aufsichtsbehörde Beschwerde
-            einzureichen (z. B. bei der zuständigen Datenschutzbehörde in deinem
-            Wohnortbundesland), wenn du der Ansicht bist, dass die Verarbeitung
-            deiner personenbezogenen Daten gegen die DSGVO verstößt.
-          </p>
-
-          <h2 className="font-semibold text-black">Sicherheit</h2>
-          <p>
-            Wir treffen technische und organisatorische Maßnahmen, um die
-            Sicherheit deiner Daten zu gewährleisten und sie vor unbefugtem
-            Zugriff, Verlust oder Missbrauch zu schützen. Trotzdem ist keine
-            Übertragung über das Internet vollkommen sicher.
-          </p>
-
-          <h2 className="font-semibold text-black">
-            Änderungen dieser Erklärung
-          </h2>
-          <p>
-            Wir passen diese Datenschutzerklärung an, sobald dies aufgrund der
-            Weiterentwicklung unserer Website oder geänderter gesetzlicher
-            Vorgaben erforderlich wird. Das aktuelle Datum der letzten Änderung
-            findest du oben auf der Seite (bitte manuell pflegen).
-          </p>
-
-          <div className="mt-8 text-sm text-gray-600">
-            <p>
-              Hinweis: Diese Datenschutzerklärung wurde speziell an die
-              sichtbaren Funktionen dieser Website angepasst (z. B. Cookie
-              Banner, Meta Pixel/CAPI, Mailto-Kontakt). Sie stellt keine
-              rechtliche Beratung dar. Bitte lass die Erklärung von einer
-              fachkundigen Person (z. B. Rechtsanwalt, externer
-              Datenschutzbeauftragter) prüfen, bevor du sie final
-              veröffentlichst.
-            </p>
-          </div>
 
           <div className="mt-8">
             <Link href="/impressum" className="text-blue-600 hover:underline">

@@ -107,7 +107,7 @@ export default function CookieBanner() {
               Cookie-Einstellungen
             </h3>
             <p className="mt-2 text-gray-600">
-              Wähle aus, welche Arten von Cookies du zulassen möchtest.
+              Wählen Sie aus, welche Arten von Cookies Sie zulassen möchten.
             </p>
 
             <div className="mt-4 space-y-4">
@@ -193,7 +193,7 @@ export default function CookieBanner() {
             <div className="mt-1">
               Wir und unsere Partner verwenden Cookies, um die Website zu
               betreiben, zu analysieren und personalisierte Werbung anzuzeigen.
-              Du kannst deine Einstellungen anpassen.
+              Sie können ihre Einstellungen anpassen.
             </div>
           </div>
 
