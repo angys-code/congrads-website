@@ -346,7 +346,12 @@ export default function Home() {
             return;
         }
 
+        respinSession();
+    };
+
+    const respinSession = () => {
         const subject = selectedTopic.prompts[Math.floor(Math.random() * selectedTopic.prompts.length)];
+
         setScanTopic(selectedTopic);
         setResearchSubject(subject);
         setScanStep(0);
@@ -426,6 +431,14 @@ export default function Home() {
         }
 
         startSession();
+    };
+
+    const handleRespin = () => {
+        if (sessionPhase === 'scanning') {
+            return;
+        }
+
+        respinSession();
     };
 
     return (
@@ -694,6 +707,15 @@ export default function Home() {
                                     </button>
                                 </div>
                             </div>
+
+                            <button
+                                type="button"
+                                onClick={handleRespin}
+                                disabled={sessionPhase === 'scanning' || selectedTopic.prompts.length === 0}
+                                className={`w-full rounded-2xl border border-[#ffb34733] bg-[#ffb34710] px-5 py-4 text-sm font-semibold text-[#f8e6bd] transition hover:bg-[#ffb3471d] ${sessionPhase === 'scanning' || selectedTopic.prompts.length === 0 ? 'cursor-not-allowed opacity-60' : ''}`}
+                            >
+                                Respin
+                            </button>
                         </div>
                     </aside>
                 </section>
