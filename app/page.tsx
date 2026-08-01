@@ -268,7 +268,7 @@ const formatTime = (totalSeconds: number) => {
 };
 
 export default function Home() {
-    const [selectedMode] = useState<ModeId>('off-the-cuff');
+    const [selectedMode, setSelectedMode] = useState<ModeId>('off-the-cuff');
     const [timerMinutes, setTimerMinutes] = useState(5);
     const [sessionPhase, setSessionPhase] = useState<SessionPhase>('idle');
     const [selectedTopic, setSelectedTopic] = useState<Topic>(topics[0]);
@@ -338,6 +338,7 @@ export default function Home() {
     const timerDisplay = sessionPhase === 'running' ? formatTime(secondsLeft) : `${timerMinutes} min`;
     const progress = secondsTotal > 0 ? ((secondsTotal - secondsLeft) / secondsTotal) * 100 : 0;
     const timerLocked = sessionPhase === 'scanning' || sessionPhase === 'running';
+    const modeLocked = sessionPhase === 'scanning' || sessionPhase === 'running';
     const canPause = sessionPhase === 'running' || sessionPhase === 'paused';
 
     const startSession = () => {
@@ -613,6 +614,29 @@ export default function Home() {
                                         )}
                                     </div>
                                 )}
+                            </div>
+
+                            <div className="grid gap-3 sm:grid-cols-2">
+                                {modes.map((mode) => {
+                                    const active = selectedMode === mode.id;
+
+                                    return (
+                                        <button
+                                            key={mode.id}
+                                            type="button"
+                                            onClick={() => setSelectedMode(mode.id)}
+                                            disabled={modeLocked}
+                                            className={`rounded-3xl border p-4 text-left transition duration-200 ${active ? 'border-transparent bg-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]' : 'border-white/10 bg-white/[0.04] hover:bg-white/[0.08]'} ${modeLocked ? 'cursor-not-allowed opacity-60' : ''}`}
+                                            style={active ? { boxShadow: `0 0 0 1px ${mode.accent}66, 0 0 32px ${mode.accent}22` } : undefined}
+                                        >
+                                            <div className="flex items-center justify-between gap-2">
+                                                <p className="text-sm font-semibold text-white">{mode.label}</p>
+                                                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: mode.accent }} />
+                                            </div>
+                                            <p className="mt-2 text-sm leading-6 text-zinc-400">{mode.subtitle}</p>
+                                        </button>
+                                    );
+                                })}
                             </div>
 
                             <div className="rounded-3xl border border-white/10 bg-black/25 p-4">
