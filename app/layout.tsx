@@ -15,6 +15,11 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Congrads | Research interface",
   description: "A dark, topic-driven interface for psychology, human behavior, body language, neuroscience, forensics, and supplementation.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
