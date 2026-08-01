@@ -177,7 +177,8 @@ export default function Home() {
     }, [sessionPhase]);
 
     const sessionTopic = scanTopic ?? selectedTopic;
-    const scanPreview = topics[scanStep % topics.length];
+    const scanSubjectPool = sessionTopic.prompts;
+    const scanPreview = scanSubjectPool[scanStep % scanSubjectPool.length];
     const timerDisplay = sessionPhase === 'running' ? formatTime(secondsLeft) : `${timerMinutes} min`;
     const progress = secondsTotal > 0 ? ((secondsTotal - secondsLeft) / secondsTotal) * 100 : 0;
     const timerLocked = sessionPhase === 'scanning' || sessionPhase === 'running';
@@ -363,10 +364,10 @@ export default function Home() {
                                                 <div className="min-w-0 flex-1">
                                                     <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">Topic preview</p>
                                                     <h4 className="mt-2 text-3xl font-semibold text-white transition-all duration-300">
-                                                        {scanPreview.name}
+                                                        {sessionTopic.name}
                                                     </h4>
-                                                    <p className="mt-1 text-sm text-zinc-400">{scanPreview.tag}</p>
-                                                    <p className="mt-4 text-sm leading-6 text-zinc-300">{scanPreview.summary}</p>
+                                                    <p className="mt-1 text-sm text-zinc-400">Scanning for a subtopic</p>
+                                                    <p className="mt-4 text-sm leading-6 text-zinc-300 capitalize">{scanPreview}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -390,7 +391,7 @@ export default function Home() {
                                     <div className="space-y-4">
                                         <div className="flex items-center justify-between text-xs uppercase tracking-[0.24em] text-zinc-500">
                                             <span>Session target</span>
-                                            <span>{sessionPhase === 'running' ? 'Timer active' : 'Topic locked'}</span>
+                                            <span>{sessionPhase === 'running' ? 'Timer active' : 'Subject locked'}</span>
                                         </div>
 
                                         <div className="rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.01))] p-5">
@@ -399,10 +400,10 @@ export default function Home() {
                                                     <sessionTopic.icon className="h-6 w-6" />
                                                 </div>
                                                 <div className="min-w-0 flex-1">
-                                                    <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">Focus topic</p>
-                                                    <h4 className="mt-2 text-3xl font-semibold text-white">{sessionTopic.name}</h4>
-                                                    <p className="mt-1 text-sm text-zinc-400">{sessionTopic.tag}</p>
-                                                    <p className="mt-4 text-sm leading-6 text-zinc-300">{researchSubject || sessionTopic.prompts[0]}</p>
+                                                    <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">Research area</p>
+                                                    <h4 className="mt-2 text-3xl font-semibold text-white capitalize">{researchSubject || sessionTopic.prompts[0]}</h4>
+                                                    <p className="mt-1 text-sm text-zinc-400">{sessionTopic.name}</p>
+                                                    <p className="mt-4 text-sm leading-6 text-zinc-300">Study the area through this subtopic, then use the timer to work the idea deeper.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -417,8 +418,8 @@ export default function Home() {
                                                 <p className="mt-2 text-sm text-zinc-200">{sessionPhase === 'running' ? formatTime(secondsLeft) : `${timerMinutes} minutes`}</p>
                                             </div>
                                             <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                                                <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Depth</p>
-                                                <p className="mt-2 text-sm text-zinc-200">{selectedMode === 'off-the-cuff' ? 'Fast signal' : 'Layered evidence'}</p>
+                                                <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Domain</p>
+                                                <p className="mt-2 text-sm text-zinc-200">{sessionTopic.name}</p>
                                             </div>
                                         </div>
 
@@ -502,7 +503,7 @@ export default function Home() {
                                 </div>
 
                                 <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-zinc-300">
-                                    <span>Session topic</span>
+                                    <span>Research area</span>
                                     <span className="text-white">{selectedTopic.name}</span>
                                 </div>
                             </div>
@@ -545,7 +546,7 @@ export default function Home() {
                     <div className="mb-5 flex items-end justify-between gap-4">
                         <div>
                             <p className="text-xs uppercase tracking-[0.35em] text-zinc-500">Topic atlas</p>
-                            <h3 className="mt-2 text-2xl font-semibold text-white">Pick the topic area before you scan the specific subject.</h3>
+                            <h3 className="mt-2 text-2xl font-semibold text-white">Pick the topic area. The scan reveals the specific subtopic.</h3>
                         </div>
                         <div className="hidden text-sm text-zinc-400 sm:block">Red and amber tones keep the interface dark but expressive.</div>
                     </div>
