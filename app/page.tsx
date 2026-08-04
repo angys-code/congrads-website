@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, Activity, Brain, BookOpen, Clock3, ScanSearch, ShieldAlert, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -277,6 +277,7 @@ export default function Home() {
     const [scanStep, setScanStep] = useState(0);
     const [secondsLeft, setSecondsLeft] = useState(0);
     const [secondsTotal, setSecondsTotal] = useState(0);
+    const audioContextRef = useRef<AudioContext | null>(null);
 
     const currentMode = useMemo(
         () => modes.find((mode) => mode.id === selectedMode) ?? modes[0],
@@ -330,6 +331,44 @@ export default function Home() {
         }, 1000);
 
         return () => window.clearInterval(countdown);
+    }, [sessionPhase]);
+
+    useEffect(() => {
+        if (sessionPhase !== 'finished') {
+            return;
+        }
+
+        const AudioContextCtor = typeof window !== 'undefined'
+            ? window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
+            : null;
+
+        if (!AudioContextCtor) {
+            return;
+        }
+
+        const audioContext = audioContextRef.current ?? new AudioContextCtor();
+        audioContextRef.current = audioContext;
+
+        if (audioContext.state === 'suspended') {
+            void audioContext.resume();
+        }
+
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(880, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(620, audioContext.currentTime + 0.35);
+
+        gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.16, audioContext.currentTime + 0.02);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.45);
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.45);
     }, [sessionPhase]);
 
     const sessionTopic = scanTopic ?? selectedTopic;
@@ -472,12 +511,12 @@ export default function Home() {
                                 Dark research for how people think, move, and react.
                             </h2>
                             <p className="max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
-                                Start a session, let the interface scan for a topic, then launch the timer once the prompt is revealed. The same flow works across psychology, human behavior, body language, neuroscience, forensics, and supplementation.
+                                Start a session, let the interface scan for a topic, then launch the timer once the prompt is revealed. The same flow works across psychology, human behavior, body language, neuroscience, forensics, and Philosophy.
                             </p>
                         </div>
 
                         <div className="flex flex-wrap gap-3 text-sm text-zinc-200">
-                            {['Psychology', 'Human behavior', 'Body language', 'Neuroscience', 'Forensics', 'Supplementation'].map((item) => (
+                            {['Psychology', 'Human behavior', 'Body language', 'Neuroscience', 'Forensics', 'Philosophy'].map((item) => (
                                 <span key={item} className="rounded-full border border-white/10 bg-white/5 px-4 py-2">
                                     {item}
                                 </span>
